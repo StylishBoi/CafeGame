@@ -1,0 +1,30 @@
+.mood {
+    background-color: rgb(8, 137, 46);
+    color: rgb(255, 255, 255);
+    max-width: 20%;
+    min-width: 10%;
+    width: 20%;
+    max-height: 15%;
+    min-height: 10%;
+    height: 15%;
+    -unity-text-align: middle-center;
+    font-size: 100%;
+    -unity-font-style: bold-and-italic;
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    border-top-width: 5px;
+    border-right-width: 5px;
+    border-bottom-width: 5px;
+    border-left-width: 5px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-left-color: rgb(255, 255, 255);
+    border-right-color: rgb(255, 255, 255);
+    border-top-color: rgb(255, 255, 255);
+    border-bottom-color: rgb(255, 255, 255);
+    display: flex;
+}
