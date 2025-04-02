@@ -1,4 +1,4 @@
-using UnityEngine;
+/*using UnityEngine;
 using Yarn.Unity;
 
 public class DialogueTrigger : MonoBehaviour
@@ -48,4 +48,4 @@ public class DialogueTrigger : MonoBehaviour
             playerInRange = false;
         }
     }
-}
+}*/
