@@ -1,0 +1,99 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 3
+  tags:
+  - EndZone
+  - SuccessZone
+  - Backdrop
+  - Foreground
+  - UI
+  - Seat
+  - Spawnpoint
+  - Plate
+  - Dishwasher
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - NPCS
+  - Water
+  - UI
+  - Decorations
+  - Architecture
+  - Maintenance
+  - Seat
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 1583530637
+    locked: 0
+  - name: Interactible Item
+    uniqueID: 1369384321
+    locked: 0
+  - name: Decorations
+    uniqueID: 2834035791
+    locked: 0
+  - name: NPCS
+    uniqueID: 781700311
+    locked: 0
+  - name: Player
+    uniqueID: 3481154517
+    locked: 0
+  - name: Architecture
+    uniqueID: 3226752903
+    locked: 0
+  - name: Icon Back-Drop 1
+    uniqueID: 1239565313
+    locked: 0
+  - name: Icon Back-Drop 2
+    uniqueID: 3617854147
+    locked: 0
+  - name: Icon
+    uniqueID: 3209866663
+    locked: 0
+  - name: Mini-Game Fade
+    uniqueID: 3238359555
+    locked: 0
+  - name: Mini-Game Background
+    uniqueID: 3039915641
+    locked: 0
+  - name: Mini-Game Corners
+    uniqueID: 843320449
+    locked: 0
+  - name: Mini-Game Middle Ground
+    uniqueID: 3825388875
+    locked: 0
+  - name: Mini-Game Foreground
+    uniqueID: 357024919
+    locked: 0
+  - name: Mini-Game Indication
+    uniqueID: 2195675949
+    locked: 0
+  m_RenderingLayers:
+  - Default

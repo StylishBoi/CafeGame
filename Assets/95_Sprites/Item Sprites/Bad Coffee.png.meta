@@ -1,0 +1,507 @@
+fileFormatVersion: 2
+guid: e08518e8e41dcc44e83003a518b8d773
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1314484652537232785
+    second: Bad Coffee_0
+  - first:
+      213: -5359236246113972035
+    second: Bad Coffee_1
+  - first:
+      213: 5229936784626679313
+    second: Bad Coffee_2
+  - first:
+      213: -2174983120497350756
+    second: Bad Coffee_3
+  - first:
+      213: 268791970454943955
+    second: Bad Coffee_4
+  - first:
+      213: -8251578728681662903
+    second: Bad Coffee_5
+  - first:
+      213: 3494844933507079118
+    second: Bad Coffee_6
+  - first:
+      213: 8484200163326935467
+    second: Bad Coffee_7
+  - first:
+      213: 3107893914347658956
+    second: Bad Coffee_8
+  - first:
+      213: -6562237104286828217
+    second: Bad Coffee_9
+  - first:
+      213: 760474783216148751
+    second: Bad Coffee_10
+  - first:
+      213: 850264947114402347
+    second: Bad Coffee_11
+  - first:
+      213: -6267944073924777334
+    second: Bad Coffee_12
+  - first:
+      213: -1178913701741197266
+    second: Bad Coffee_13
+  - first:
+      213: -345542411355374230
+    second: Bad Coffee_14
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Bad Coffee_0
+      rect:
+        serializedVersion: 2
+        x: 341
+        y: 384
+        width: 66
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f62c0d64c2302cde0800000000000000
+      internalID: -1314484652537232785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bad Coffee_1
+      rect:
+        serializedVersion: 2
+        x: 435
+        y: 413
+        width: 23
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db09af2570b20a5b0800000000000000
+      internalID: -5359236246113972035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bad Coffee_2
+      rect:
+        serializedVersion: 2
+        x: 219
+        y: 354
+        width: 44
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 11efb65dbc7749840800000000000000
+      internalID: 5229936784626679313
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bad Coffee_3
+      rect:
+        serializedVersion: 2
+        x: 293
+        y: 363
+        width: 30
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c97e84e1068e0d1e0800000000000000
+      internalID: -2174983120497350756
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bad Coffee_4
+      rect:
+        serializedVersion: 2
+        x: 309
+        y: 308
+        width: 48
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d8b17d7fd0fab300800000000000000
+      internalID: 268791970454943955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bad Coffee_5
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 365
+        width: 26
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 94692c07dd08c7d80800000000000000
+      internalID: -8251578728681662903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bad Coffee_6
+      rect:
+        serializedVersion: 2
+        x: 413
+        y: 360
+        width: 28
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ecb53c653fe208030800000000000000
+      internalID: 3494844933507079118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bad Coffee_7
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 32
+        width: 327
+        height: 328
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba1c96ae81fedb570800000000000000
+      internalID: 8484200163326935467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bad Coffee_8
+      rect:
+        serializedVersion: 2
+        x: 268
+        y: 332
+        width: 38
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cce5a4c7c05712b20800000000000000
+      internalID: 3107893914347658956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bad Coffee_9
+      rect:
+        serializedVersion: 2
+        x: 347
+        y: 234
+        width: 51
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74978133f104ee4a0800000000000000
+      internalID: -6562237104286828217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bad Coffee_10
+      rect:
+        serializedVersion: 2
+        x: 386
+        y: 297
+        width: 28
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f01ad3249cfbd8a00800000000000000
+      internalID: 760474783216148751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bad Coffee_11
+      rect:
+        serializedVersion: 2
+        x: 418
+        y: 299
+        width: 22
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b2268b9e67fbccb00800000000000000
+      internalID: 850264947114402347
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bad Coffee_12
+      rect:
+        serializedVersion: 2
+        x: 414
+        y: 266
+        width: 24
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8ae2b1e21ac309a0800000000000000
+      internalID: -6267944073924777334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bad Coffee_13
+      rect:
+        serializedVersion: 2
+        x: 351
+        y: 171
+        width: 42
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2800e20c38a3afe0800000000000000
+      internalID: -1178913701741197266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bad Coffee_14
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 0
+        width: 180
+        height: 157
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a6db454f103643bf0800000000000000
+      internalID: -345542411355374230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Bad Coffee_0: -1314484652537232785
+      Bad Coffee_1: -5359236246113972035
+      Bad Coffee_10: 760474783216148751
+      Bad Coffee_11: 850264947114402347
+      Bad Coffee_12: -6267944073924777334
+      Bad Coffee_13: -1178913701741197266
+      Bad Coffee_14: -345542411355374230
+      Bad Coffee_2: 5229936784626679313
+      Bad Coffee_3: -2174983120497350756
+      Bad Coffee_4: 268791970454943955
+      Bad Coffee_5: -8251578728681662903
+      Bad Coffee_6: 3494844933507079118
+      Bad Coffee_7: 8484200163326935467
+      Bad Coffee_8: 3107893914347658956
+      Bad Coffee_9: -6562237104286828217
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

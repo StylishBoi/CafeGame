@@ -1,0 +1,21 @@
+﻿title: MyStory
+tags:
+---
+Stylish: Heya!
+    -> What is this ?
+        Narrator: This is a test!
+            -> Whatever.
+                <<jump Whatever>>
+            -> Cool
+                <<jump Cool>>
+===
+
+title: Oh
+---
+Stylish: Dang, you don't care...
+===
+
+title: Cool
+---
+Stylish: Yeah :D
+===
