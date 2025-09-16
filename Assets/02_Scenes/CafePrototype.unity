@@ -9134,7 +9134,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5314206232988151548, guid: b36e16e5780204245a774850d054480f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6067450958268832930, guid: b36e16e5780204245a774850d054480f, type: 3}
       propertyPath: m_Size.x
@@ -9152,8 +9152,11 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedComponents:
+    - {fileID: 7241012523945546389, guid: b36e16e5780204245a774850d054480f, type: 3}
+    m_RemovedGameObjects:
+    - {fileID: 9069733483477237382, guid: b36e16e5780204245a774850d054480f, type: 3}
+    - {fileID: 2486748464810111014, guid: b36e16e5780204245a774850d054480f, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b36e16e5780204245a774850d054480f, type: 3}

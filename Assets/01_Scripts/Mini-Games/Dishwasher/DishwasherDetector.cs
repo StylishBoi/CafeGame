@@ -27,6 +27,7 @@ public class DishwasherDetector : MonoBehaviour
                 //_minigameManager.MiniGameStart();
                 SceneManager.LoadScene("Dishwasher", LoadSceneMode.Additive);
                 MaintenanceManager.RemoveMaintenanceEvent();
+                Destroy(gameObject);
             }
         }
         else

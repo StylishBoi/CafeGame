@@ -5,7 +5,12 @@ public class Drag : MonoBehaviour
 {
     private bool dragging = false;
     private Vector3 offset;
+    private Vector3 startPosition;
 
+    void Start()
+    {
+        startPosition = transform.position;
+    }
     void Update()
     {
         if (dragging)
@@ -31,6 +36,12 @@ public class Drag : MonoBehaviour
         if (collision.CompareTag("Dishwasher"))
         {
             Destroy(gameObject);
+        }
+        
+        else if (collision.gameObject.CompareTag("CollisionBorder"))
+        {
+            dragging = false;
+            transform.position = startPosition;
         }
     }
 }
