@@ -4,11 +4,11 @@ using UnityEngine;
 public class Labeller : MonoBehaviour
 {
     public Vector2Int cords=new Vector2Int();
-    GridManager gridManager;
+    private GridManager _gridManager;
     
     void Awake()
     {
-        gridManager = FindFirstObjectByType<GridManager>();
+        _gridManager = FindFirstObjectByType<GridManager>();
     }
 
     private void Update()
@@ -19,10 +19,10 @@ public class Labeller : MonoBehaviour
 
     private void DisplayCords()
     {
-        if(!gridManager) { return; }
+        if(!_gridManager) { return; }
         
-        cords.x=Mathf.RoundToInt(transform.position.x/gridManager.UnitGridSize);
-        cords.y=Mathf.RoundToInt(transform.position.y/gridManager.UnitGridSize);
+        cords.x=Mathf.RoundToInt(transform.position.x/_gridManager.UnitGridSize);
+        cords.y=Mathf.RoundToInt(transform.position.y/_gridManager.UnitGridSize);
 
     }
 }

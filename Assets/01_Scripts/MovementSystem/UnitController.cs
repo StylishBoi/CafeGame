@@ -19,28 +19,25 @@ public class UnitController : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            Debug.Log(Input.mousePosition);
-            RaycastHit hit;
             
-            bool hasHit = Physics.Raycast(ray, out hit);
+            RaycastHit2D hasHit = Physics2D.Raycast(ray.origin, ray.direction);
 
             if (hasHit)
             {
-                if (hit.transform.tag == "Tile")
+                if (hasHit.transform.CompareTag("Tile"))
                 {
                     if (unitSelected)
                     {
-                        Vector2Int targetCords = hit.transform.GetComponent<Labeller>().cords;
-                        Vector2Int startCords = new Vector2Int((int) selectedUnit.position.x, (int) selectedUnit.position.y) / _gridManager.UnitGridSize;
+                        Vector2Int targetCords = hasHit.transform.GetComponent<Labeller>().cords;
+                        //Vector2Int startCords = new Vector2Int((int) selectedUnit.position.x, (int) selectedUnit.position.y) / _gridManager.UnitGridSize;
                         
-                        selectedUnit.transform.position = new Vector3(targetCords.x, selectedUnit.position.y, targetCords.y);
+                        selectedUnit.transform.position = new Vector3(targetCords.x, targetCords.y, selectedUnit.position.y);
                     }
                 }
 
-                if (hit.transform.tag == "Unit")
+                if (hasHit.transform.CompareTag("Unit"))
                 {
-                    Debug.Log("Unit has been selected");
-                    selectedUnit = hit.transform;
+                    selectedUnit = hasHit.transform;
                     unitSelected = true;
                 }
             }
