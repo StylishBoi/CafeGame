@@ -1,13 +1,16 @@
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
-using UnityEngine.Tilemaps;
 
 public class Node
 {
-    public Vector2Int cords;
+    public Vector2Int Cords;
+    public bool Walkable;
+    public bool Explored;
+    public bool Path;
+    public Node ConnectTo;
 
-    public Node(Vector2Int cords)
+    public Node(Vector2Int cords, bool walkable)
     {
-        this.cords = cords;
+        this.Cords = cords;
+        this.Walkable = walkable;
     }
 }
