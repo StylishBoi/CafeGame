@@ -72,8 +72,8 @@ public class GridManager : MonoBehaviour
             {
                 Vector2Int cords = new Vector2Int(x, y);
                 grid.Add(cords, new Node(cords, true));
-                
             }
         }
+        Debug.Log(grid.Keys.Count);
     }
 }

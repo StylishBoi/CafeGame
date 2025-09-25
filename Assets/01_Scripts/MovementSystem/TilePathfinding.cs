@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.Linq;
 
 public class TilePathfinding : MonoBehaviour
 {
@@ -125,8 +126,12 @@ public class TilePathfinding : MonoBehaviour
     {
         startCords = startCoordinates;
         targetCords = targetCoordinates;
-        _startNode = _grid[this.startCords];
-        _targetNode = _grid[this.targetCords];
+        Debug.Log("Stop 1");
+        Debug.Log(_grid.Count);
+        Debug.Log(_grid.Keys.First());
+        Debug.Log("Stop 2");
+        _startNode = _grid[startCords];
+        _targetNode = _grid[targetCords];
         GetNewPath();
     }
 }
