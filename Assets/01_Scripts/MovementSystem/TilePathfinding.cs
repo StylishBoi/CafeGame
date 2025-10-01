@@ -127,11 +127,10 @@ public class TilePathfinding : MonoBehaviour
         startCords = startCoordinates;
         targetCords = targetCoordinates;
         Debug.Log("Stop 1");
-        Debug.Log(_grid.Count);
-        Debug.Log(_grid.Keys.First());
         Debug.Log("Stop 2");
         _startNode = _grid[startCords];
         _targetNode = _grid[targetCords];
+        Debug.Log("Stop 3");
         GetNewPath();
     }
 }

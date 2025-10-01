@@ -153,7 +153,7 @@ public class NPCFSM : MonoBehaviour
             case FSM_State.Arrival:
             case FSM_State.LeaveHappy:
             case FSM_State.LeaveUnhappy:
-                _distanceToGoal = Vector2.Distance(transform.position, _npcAI.aiPath.destination);
+                _distanceToGoal = Vector2.Distance(transform.position, _npcAI.targetPosition);
                 break;
             case FSM_State.Waiting:
                 _npcAI.waitTimer -= Time.deltaTime;

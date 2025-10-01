@@ -9,6 +9,8 @@ public class Tile : MonoBehaviour
 
     void Start()
     {
+        _gridManager=FindFirstObjectByType<GridManager>();
+        
         SetCords();
 
         if (blocked)
@@ -19,7 +21,6 @@ public class Tile : MonoBehaviour
 
     private void SetCords()
     {
-        _gridManager=FindFirstObjectByType<GridManager>();
         int x = (int)transform.position.x;
         int y = (int)transform.position.y;
         

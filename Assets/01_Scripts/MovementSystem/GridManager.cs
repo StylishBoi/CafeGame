@@ -70,7 +70,7 @@ public class GridManager : MonoBehaviour
         {
             for (int y = 0; y < gridSize.y; y++)
             {
-                Vector2Int cords = new Vector2Int(x, y);
+                Vector2Int cords = new Vector2Int(x+(int)transform.position.x, y+(int)transform.position.y);
                 grid.Add(cords, new Node(cords, true));
             }
         }
