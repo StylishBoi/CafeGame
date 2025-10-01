@@ -114,9 +114,8 @@ public class NPCAI : MonoBehaviour
         _spawnpoint=GameObject.FindGameObjectWithTag("Spawnpoint").transform;
         _uIManager= GameObject.FindGameObjectWithTag("UI").GetComponent<UIManager>();
         _animator = GetComponentInChildren<Animator>();
-        if (TryGetComponent(out _unitController)) 
+        if (TryGetComponent(out _unitController))
             if (TryGetComponent(out aiPath))
-                Debug.Log("Step 1");
         
         //New AI Path
         targetPosition = new Vector2Int((int)_targetSeat.position.x, (int)_targetSeat.position.y);
