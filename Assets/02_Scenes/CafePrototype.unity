@@ -9117,8 +9117,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npcPrefab: {fileID: 3087438860481572376, guid: 5b581c00da169784d82ddfb2a2f3395c, type: 3}
   spawnPosition: {fileID: 10179536}
-  minNormalCoolDown: 1
-  maxNormalCoolDown: 1
+  minNormalCoolDown: 5
+  maxNormalCoolDown: 10
   minRushHourCoolDown: 2
   maxRushHourCoolDown: 6
 --- !u!1 &1716262826 stripped

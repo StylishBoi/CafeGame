@@ -21,15 +21,12 @@ public class NPCFSM : MonoBehaviour
     private float _distanceToGoal=1f;
     
     [SerializeField] private SpriteRenderer NPCVisual;
-    [SerializeField] private Transform movePoint;
 
     private void Start()
     {
         if(TryGetComponent(out _npcAI)){}
         
         SetState(FSM_State.Arrival);
-
-        movePoint.parent = null;
     }
 
     private void FixedUpdate()
@@ -94,14 +91,14 @@ public class NPCFSM : MonoBehaviour
                 _npcAI.EatFactor = 1f;
                 break;
             case FSM_State.LeaveHappy:
+                _npcAI.NPCLeave();
                 NPCVisual.color = Color.cyan;
-                _npcAI.aiPath.maxSpeed = 3f;
                 _npcAI.LeaveHappyFactor = 1f;
                 break;
             case FSM_State.LeaveUnhappy:
+                _npcAI.NPCLeave();
                 NPCVisual.color = Color.red;
                 StreakManager.NegativeStreakIncrease();
-                _npcAI.aiPath.maxSpeed = 3f;
                 _npcAI.LeaveUnhappyFactor = 1f;
                 break;
             case FSM_State.Exiting:
@@ -121,7 +118,6 @@ public class NPCFSM : MonoBehaviour
         {
             case FSM_State.Arrival:
                 _npcAI.ArrivalFactor = 0f;
-                _npcAI.aiPath.maxSpeed = 0;
                 break;
             case FSM_State.Waiting:
                 _npcAI.WaitFactor = 0f;

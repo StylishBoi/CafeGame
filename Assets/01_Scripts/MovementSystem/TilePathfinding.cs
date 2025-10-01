@@ -117,20 +117,12 @@ public class TilePathfinding : MonoBehaviour
         return path;
     }
 
-    public void NotifyReceivers()
-    {
-        BroadcastMessage("RecalculatePath", false, SendMessageOptions.DontRequireReceiver);
-    }
-
     public void SetNewDestination(Vector2Int startCoordinates, Vector2Int targetCoordinates)
     {
         startCords = startCoordinates;
         targetCords = targetCoordinates;
-        Debug.Log("Stop 1");
-        Debug.Log("Stop 2");
         _startNode = _grid[startCords];
         _targetNode = _grid[targetCords];
-        Debug.Log("Stop 3");
         GetNewPath();
     }
 }

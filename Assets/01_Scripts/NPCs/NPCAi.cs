@@ -191,6 +191,7 @@ public class NPCAI : MonoBehaviour
         }
         if (exitFactor>0)
         {
+            Debug.Log("I'm exiting");
             Exit();
         }
     }
@@ -257,11 +258,14 @@ public class NPCAI : MonoBehaviour
 
     public void ClientUIDisabled()
     {
-        //aiPath.destination = _spawnpoint.position;
-        targetPosition=new Vector2Int((int)_spawnpoint.position.x, (int)_spawnpoint.position.y);
-        _unitController.NPCInfo(new Vector2Int((int)transform.position.x, (int)transform.position.y), targetPosition, transform);
         interactionCue.SetActive(false);
         visualCue.SetActive(false);
+    }
+    
+    public void NPCLeave()
+    {
+        targetPosition=new Vector2Int((int)_spawnpoint.position.x, (int)_spawnpoint.position.y);
+        _unitController.NPCInfo(new Vector2Int((int)transform.position.x, (int)transform.position.y), targetPosition, transform);
     }
     
     private void OnTriggerEnter2D(Collider2D collision)
@@ -279,10 +283,4 @@ public class NPCAI : MonoBehaviour
             _playerInRange = false;
         }
     }
-    
-    //1 - Fix milkshake mini-game
-    //2 - Fix UI overlay
-    //3 - Add randomness to coffee mini-game
-    //4 - Add proper timer to NPCs
-    //5 - Add more mini-games
 }
