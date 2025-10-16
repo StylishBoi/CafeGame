@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 public class FloorMopDetector : MonoBehaviour
 {
@@ -7,8 +8,9 @@ public class FloorMopDetector : MonoBehaviour
     [SerializeField] private GameObject visualCue;
     private bool playerInRange;
     
+    [FormerlySerializedAs("_uiManager")]
     [Header("Managers")]
-    [SerializeField] private UIManager _uiManager;
+    [SerializeField] private CafeUIManager cafeUIManager;
     [SerializeField] private MinigameManager _minigameManager;
     
     private void Awake()

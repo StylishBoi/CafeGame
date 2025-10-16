@@ -9,13 +9,13 @@ public static class StreakManager
     {
         NegativeStreak = 0;
         Streak++;
-        UIManager.Instance.StreakUpdate();
+        CafeUIManager.Instance.StreakUpdate();
     }
     
     public static void NegativeStreakIncrease()
     {
         Streak = 0;
         NegativeStreak++;
-        UIManager.Instance.StreakUpdate();
+        CafeUIManager.Instance.StreakUpdate();
     }
 }

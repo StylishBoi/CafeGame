@@ -417,7 +417,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &70997470
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1412,7 +1412,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   visualCue: {fileID: 1522541398}
-  uiManager: {fileID: 0}
+  cafeUIManager: {fileID: 0}
   minigameManager: {fileID: 0}
 --- !u!1 &223206182
 GameObject:
@@ -1686,6 +1686,7 @@ GameObject:
   - component: {fileID: 260220896}
   - component: {fileID: 260220895}
   - component: {fileID: 260220894}
+  - component: {fileID: 260220900}
   m_Layer: 5
   m_Name: ---UI---
   m_TagString: UI
@@ -1801,18 +1802,30 @@ MonoBehaviour:
   resultFlash: {fileID: 2105105094}
   bottomFlash: {fileID: 1382243763}
   fullScreenFade: {fileID: 1468319499}
-  timeToFade: 1
-  badResult: {r: 0.99215686, g: 0.037688043, b: 0, a: 1}
-  mediocreResult: {r: 1, g: 0.6443302, b: 0, a: 1}
-  goodResult: {r: 0.37673187, g: 1, b: 0, a: 1}
-  eventFlash: {r: 1, g: 1, b: 1, a: 1}
-  resultScreen: {fileID: 2105105092}
-  rushHourScreen: {fileID: 70997469}
-  rushOverScreen: {fileID: 372318319}
-  endHourScreen: {fileID: 801079983}
-  bottomFlashScreen: {fileID: 1382243761}
+  rushHourScreen: {fileID: 70997471}
+  rushOverScreen: {fileID: 372318321}
+  endHourScreen: {fileID: 801079985}
+  badResultColor: {r: 0.96862745, g: 0.39215687, b: 0.39215687, a: 1}
+  mediocreResultColor: {r: 1, g: 0.83137256, b: 0, a: 1}
+  goodResultColor: {r: 0.3254902, g: 0.6745098, b: 0.3254902, a: 1}
+  eventFlashColor: {r: 1, g: 1, b: 1, a: 1}
   inventoryScreen: {fileID: 1952493833}
   streakText: {fileID: 393878887}
+--- !u!114 &260220900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 260220893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3561d3c49387bc9479a829e6347aea70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashDuration: 1
+  fadeOutDuration: 1
+  fadeInDuration: 1
 --- !u!1001 &332580424
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1990,7 +2003,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &372318320
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2963,7 +2976,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   visualCue: {fileID: 4312679562185349691}
-  _uiManager: {fileID: 260220899}
+  cafeUIManager: {fileID: 260220899}
   _minigameManager: {fileID: 1328509647}
   _goodItem: {fileID: 11400000, guid: 7b2cf90c93d320e4ebbb88c349efc117, type: 2}
   _badItem: {fileID: 11400000, guid: a3322958496f67349ac31bd4b61df8ab, type: 2}
@@ -3564,7 +3577,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &801079984
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6287,7 +6300,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1382243762
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6668,7 +6681,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1468319498
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7023,6 +7036,7 @@ GameObject:
   - component: {fileID: 1570826342}
   - component: {fileID: 1570826341}
   - component: {fileID: 1570826344}
+  - component: {fileID: 1570826345}
   m_Layer: 0
   m_Name: ---Main Camera---
   m_TagString: MainCamera
@@ -7148,6 +7162,18 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!114 &1570826345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1570826340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 383e92d19536e444d8a89dfb96cef171, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1586401455 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5574435215134910079, guid: b364d3df74f40cd40af0c66361078b1b, type: 3}
@@ -9223,7 +9249,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   visualCue: {fileID: 1936677737}
-  _uiManager: {fileID: 260220899}
+  cafeUIManager: {fileID: 260220899}
   _minigameManager: {fileID: 1328509647}
 --- !u!1 &1785908353
 GameObject:
@@ -10519,7 +10545,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2105105093
 RectTransform:
   m_ObjectHideFlags: 0

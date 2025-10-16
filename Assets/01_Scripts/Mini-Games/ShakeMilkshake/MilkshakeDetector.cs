@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 public class MilkshakeDetector : MonoBehaviour
 {
@@ -7,8 +8,9 @@ public class MilkshakeDetector : MonoBehaviour
     [SerializeField] private GameObject visualCue;
     private bool playerInRange;
     
+    [FormerlySerializedAs("_uiManager")]
     [Header("Managers")]
-    [SerializeField] private UIManager _uiManager;
+    [SerializeField] private CafeUIManager cafeUIManager;
     [SerializeField] private MinigameManager _minigameManager;
     
     private void Awake()
@@ -24,7 +26,7 @@ public class MilkshakeDetector : MonoBehaviour
             visualCue.SetActive(true);
             if (InputManager.GetInstance().GetInteractPressed())
             {
-                _uiManager.HideUI();
+                cafeUIManager.HideUI();
                 SceneManager.LoadScene("ShakeMilkshake", LoadSceneMode.Additive);
             }
         }

@@ -9,8 +9,9 @@ public class TeaDetector : MonoBehaviour
     [SerializeField] private GameObject visualCue;
     private bool _playerInRange;
     
+    [FormerlySerializedAs("uiManager")]
     [Header("Managers")]
-    [SerializeField] private UIManager uiManager;
+    [SerializeField] private CafeUIManager cafeUIManager;
     [SerializeField] private MinigameManager minigameManager;
     
     private void Awake()

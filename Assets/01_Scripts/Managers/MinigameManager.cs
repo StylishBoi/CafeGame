@@ -17,7 +17,7 @@ public class MinigameManager : MonoBehaviour
         // Unload Scene
         SceneManager.UnloadSceneAsync(lastLoadedScene);
 
-        UIManager.Instance.NewItem();
+        CafeUIManager.Instance.NewItem();
     }
 
     public static void MiniGameStart(Item badResult, Item goodResult)

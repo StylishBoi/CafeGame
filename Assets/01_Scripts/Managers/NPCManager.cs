@@ -19,7 +19,7 @@ public class NPCManager : MonoBehaviour
     private float _costumerCoolDown;
     private float _customerTimer;
     private GameObject[] _seats;
-    private UIManager _uiManager;
+    private CafeUIManager _cafeUIManager;
     
     private void OnEnable()
     {
@@ -34,7 +34,7 @@ public class NPCManager : MonoBehaviour
     {
         _seats = GameObject.FindGameObjectsWithTag("Seat");
         Debug.Log(_seats.Length);
-        _uiManager = GameObject.FindGameObjectWithTag("UI").GetComponent<UIManager>();
+        _cafeUIManager = GameObject.FindGameObjectWithTag("UI").GetComponent<CafeUIManager>();
         _dayReallyOver = false;
         IsDayOver = false;
     }
@@ -76,19 +76,19 @@ public class NPCManager : MonoBehaviour
             Debug.Log("Rush Hour !");
             _isRushHour = true;
             _costumerCoolDown = 2f;
-            _uiManager.RushHour();
+            _cafeUIManager.RushHour();
         }
         else if (TimeManager.Hour == 13 || TimeManager.Hour == 19)
         {
             Debug.Log("Rush Hour is finished");
             _isRushHour = false;
-            _uiManager.RushOver();
+            _cafeUIManager.RushOver();
         }
         else if (TimeManager.Hour == 21)
         {
             Debug.Log("Day is finished");
             IsDayOver = true;
-            _uiManager.DayOver();
+            _cafeUIManager.DayOver();
         }
     }
     
@@ -115,7 +115,7 @@ public class NPCManager : MonoBehaviour
         }
         Debug.Log("All clients left");
         _dayReallyOver=true;
-        UIManager.Instance.EndOfDayFade();
+        CafeUIManager.Instance.EndOfDayFade();
     }
     //1 - Setup end of day procedure
     //2 - Make rush hour text last longer

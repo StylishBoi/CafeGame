@@ -67,7 +67,7 @@ public class NPCAI : MonoBehaviour
     private int _random;
     private Item _desiredItem;
     public ItemPickUp itemPickUp;
-    private UIManager _uIManager;
+    private CafeUIManager _uIManager;
     private bool _playerInRange;
 
     public float ArrivalFactor
@@ -112,7 +112,7 @@ public class NPCAI : MonoBehaviour
         _targetSeat = transform.parent;
         _targetName = transform.parent.gameObject;
         _spawnpoint=GameObject.FindGameObjectWithTag("Spawnpoint").transform;
-        _uIManager= GameObject.FindGameObjectWithTag("UI").GetComponent<UIManager>();
+        _uIManager= GameObject.FindGameObjectWithTag("UI").GetComponent<CafeUIManager>();
         _animator = GetComponentInChildren<Animator>();
         if (TryGetComponent(out _unitController))
             if (TryGetComponent(out aiPath))
