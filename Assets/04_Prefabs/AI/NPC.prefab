@@ -234,7 +234,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NPCVisual: {fileID: 8574265118930559007}
-  movePoint: {fileID: 6405089675855859951}
 --- !u!114 &2036564695342315129
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -283,7 +282,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc79abfd43929f6429809ef06a5f0447, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 3
+  movementSpeed: 2
 --- !u!1 &4127183944700967594
 GameObject:
   m_ObjectHideFlags: 0

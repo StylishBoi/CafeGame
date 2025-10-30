@@ -51,7 +51,7 @@ public class Score : MonoBehaviour
         }
         
         
-        _scoreText.text=_score.ToString("0");
+        _scoreText.text=_score+"$";
         _effect = true;
     }
 }

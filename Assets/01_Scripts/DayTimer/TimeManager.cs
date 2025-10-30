@@ -16,7 +16,7 @@ public class TimeManager : MonoBehaviour
     void Start()
     {
         Minute = 30;
-        Hour = 10;
+        Hour = 7;
         _timer=_minuteToRealTime;
         InTransition = true;
     }
