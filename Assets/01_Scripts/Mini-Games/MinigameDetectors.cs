@@ -1,17 +1,28 @@
-using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
+using UnityEngine;
 
-public class MilkshakeDetector : MonoBehaviour
+public class MinigameDetector : MonoBehaviour
 {
     [Header("Visualisers")]
     [SerializeField] private GameObject visualCue;
     private bool playerInRange;
     
-    [FormerlySerializedAs("_uiManager")]
     [Header("Managers")]
     [SerializeField] private CafeUIManager cafeUIManager;
     [SerializeField] private MinigameManager _minigameManager;
+
+    public enum MinigameScenes
+    {
+        PouringCafe,
+        Dishwasher,
+        FloorCleaning,
+        ShakeMilkshake,
+        TeaStirring,
+        Trashcan
+    }
+    
+    public MinigameScenes minigameScene;
     
     private void Awake()
     {
@@ -26,7 +37,7 @@ public class MilkshakeDetector : MonoBehaviour
             visualCue.SetActive(true);
             if (InputManager.GetInstance().GetInteractPressed())
             {
-                SceneManager.LoadScene("ShakeMilkshake", LoadSceneMode.Additive);
+                SceneManager.LoadScene(minigameScene.ToString(), LoadSceneMode.Additive);
             }
         }
         else
