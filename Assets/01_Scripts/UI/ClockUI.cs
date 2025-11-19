@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-public class TimeUI : MonoBehaviour
+public class ClockUI : MonoBehaviour
 {
     public TextMeshProUGUI timeText;
 

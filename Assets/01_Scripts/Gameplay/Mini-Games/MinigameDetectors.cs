@@ -10,7 +10,6 @@ public class MinigameDetector : MonoBehaviour
     
     [Header("Managers")]
     [SerializeField] private CafeUIManager cafeUIManager;
-    [SerializeField] private MinigameManager _minigameManager;
 
     public enum MinigameScenes
     {

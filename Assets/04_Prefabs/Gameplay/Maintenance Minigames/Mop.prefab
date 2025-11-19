@@ -74,7 +74,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1369384321
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 246f2cf7685fb154aa09637dce65dc73, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -175,7 +175,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3943936784664764727}
   - component: {fileID: 7288820827118728272}
-  - component: {fileID: 1197259848074227789}
+  - component: {fileID: 2014141056772094648}
   m_Layer: 8
   m_Name: Mop
   m_TagString: Untagged
@@ -247,7 +247,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &1197259848074227789
+--- !u!114 &2014141056772094648
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -256,12 +256,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 5866379020810241568}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83081410e1792a44bb7bf301848090b4, type: 3}
+  m_Script: {fileID: 11500000, guid: 1cdf42124dcd36e4e8434ddccbafbcf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   visualCue: {fileID: 8529369244310481388}
-  _uiManager: {fileID: 0}
+  cafeUIManager: {fileID: 0}
   _minigameManager: {fileID: 0}
+  minigameScene: 2
 --- !u!1 &8529369244310481388
 GameObject:
   m_ObjectHideFlags: 0
@@ -336,7 +337,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1068214393
-  m_SortingLayer: 6
+  m_SortingLayer: 7
   m_SortingOrder: 1
   m_Sprite: {fileID: 357006442158401228, guid: 479d2b9ed928a87409b6468385da6f1e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
