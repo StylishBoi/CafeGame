@@ -269,8 +269,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   visualCue: {fileID: 2486748464810111014}
+  maintenanceItem: 1
   cafeUIManager: {fileID: 0}
-  _minigameManager: {fileID: 0}
   minigameScene: 1
 --- !u!1 &9069733483477237382
 GameObject:

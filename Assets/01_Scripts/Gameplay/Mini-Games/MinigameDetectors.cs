@@ -6,6 +6,7 @@ public class MinigameDetector : MonoBehaviour
 {
     [Header("Visualisers")]
     [SerializeField] private GameObject visualCue;
+    [SerializeField] private bool maintenanceItem;
     private bool playerInRange;
     
     [Header("Managers")]
@@ -37,6 +38,11 @@ public class MinigameDetector : MonoBehaviour
             if (InputManager.GetInstance().GetInteractPressed())
             {
                 SceneManager.LoadScene(minigameScene.ToString(), LoadSceneMode.Additive);
+                if (maintenanceItem)
+                {
+                    Destroy(gameObject);
+                    MaintenanceManager.RemoveMaintenanceEvent();
+                }
             }
         }
         else
