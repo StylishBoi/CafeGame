@@ -25,13 +25,11 @@ public class CoffeeIncrease : MonoBehaviour
             
             if (success)
             {
-                Debug.Log("Success");
                 InventoryManager.Instance.AddItem(goodMinigameItem);
                 MinigameManager.MiniGameEnd();
             }
             else
             {
-                Debug.Log("Not a success");
                 InventoryManager.Instance.AddItem(badMinigameItem);
                 MinigameManager.MiniGameEnd();
             }

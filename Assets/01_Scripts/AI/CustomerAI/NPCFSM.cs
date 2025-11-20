@@ -112,8 +112,6 @@ public class NPCFSM : MonoBehaviour
     }
     private void OnStateExit(FSM_State state)
     {
-        //Debug.Log($"OnExit : {state}");
-        
         switch (state)
         {
             case FSM_State.Arrival:
@@ -142,8 +140,6 @@ public class NPCFSM : MonoBehaviour
     }
     private void OnStateUpdate(FSM_State state)
     {
-        //Debug.Log($"OnUpdate : {state}");
-
         switch (state)
         {
             case FSM_State.Arrival:

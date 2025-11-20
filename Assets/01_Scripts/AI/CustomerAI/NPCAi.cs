@@ -1,9 +1,4 @@
-using System.ComponentModel;
 using UnityEngine;
-using Pathfinding;
-using TMPro;
-using UnityEngine.Serialization;
-using UnityEngine.SocialPlatforms.Impl;
 
 public class NPCAI : MonoBehaviour
 {
@@ -203,7 +198,6 @@ public class NPCAI : MonoBehaviour
 
         if (exitFactor > 0)
         {
-            Debug.Log("I'm exiting");
             Exit();
         }
     }
@@ -247,7 +241,7 @@ public class NPCAI : MonoBehaviour
                             ScoreSystem.IncreaseScore(localItem.score);
                             break;
                         default:
-                            Debug.Log("Invalid item quality");
+                            Debug.LogWarning("Invalid item quality");
                             break;
                     }
 

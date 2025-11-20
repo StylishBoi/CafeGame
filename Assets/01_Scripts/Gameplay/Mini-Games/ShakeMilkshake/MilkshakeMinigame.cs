@@ -96,27 +96,23 @@ public class MilkshakeMinigame : MonoBehaviour
         {
             if (currentPress == arrowOrderInts[currentPosition])
             {
-                Debug.Log("Correct");
                 _listOfArrowButtons[currentPosition].GoodClicked();
                 currentPosition++;
                 buttonCoolDown = 0;
                 
                 if (repeat)
                 {
-                    Debug.Log("Shaking up");
                     milkshake.transform.localPosition += new Vector3(0, 50f, 0f)*Time.deltaTime;
                     repeat = false;
                 }
                 else if (!repeat)
                 {
-                    Debug.Log("Shaking down");
                     milkshake.transform.localPosition += new Vector3(0, -50f, 0f)*Time.deltaTime;
                     repeat = true;
                 }
             }
             else
             {
-                Debug.Log("Wrong");
                 _listOfArrowButtons[currentPosition].BadClicked();
                 buttonCoolDown = 0;
                 InventoryManager.Instance.AddItem(badMinigameItem);

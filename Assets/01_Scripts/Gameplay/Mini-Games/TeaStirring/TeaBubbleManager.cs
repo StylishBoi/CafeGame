@@ -36,8 +36,6 @@ public class TeaBubbleManager : MonoBehaviour
         }
         _listofbubbles[_currentBubble].Activate();
         
-        Debug.Log(_currentBubble);
-        
         //Count the numbers of bubble popped to see if the minigame is over or not
         _currentRotation++;
         

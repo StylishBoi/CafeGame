@@ -74,6 +74,5 @@ public class GridManager : MonoBehaviour
                 grid.Add(cords, new Node(cords, true));
             }
         }
-        Debug.Log(grid.Keys.Count);
     }
 }

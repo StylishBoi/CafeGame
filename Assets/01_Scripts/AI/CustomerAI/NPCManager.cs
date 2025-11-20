@@ -1,14 +1,16 @@
 using UnityEngine;
 
-public enum RushModes
-{
-    RushOn,
-    RushOff
-}
+
 
 
 public class NPCManager : MonoBehaviour
 {
+    private enum RushModes
+    {
+        RushOn,
+        RushOff
+    }
+    
     [Header("NPCs Settings")]
     [SerializeField] private GameObject npcPrefab;
     [SerializeField] private GameObject spawnPosition;
@@ -23,7 +25,7 @@ public class NPCManager : MonoBehaviour
     private float _costumerCoolDown;
     private float _customerTimer;
     
-    private RushModes _currentRushMode;
+    private RushModes _currentRushMode=RushModes.RushOff;
     private GameObject[] _seats;
     private CafeUIManager _cafeUIManager;
 
