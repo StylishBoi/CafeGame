@@ -6,7 +6,6 @@ public class MainMenu : MonoBehaviour
 {
     [SerializeField] private Image transitionImage;
     private Color _currentColor;
-    private bool _transitioning;
 
     void Start()
     {
@@ -14,12 +13,12 @@ public class MainMenu : MonoBehaviour
     }
     public void StartGame()
     {
-        _transitioning = true;
+        GameManager.Instance.StartGame();
     }
 
     void Update()
     {
-        if (_transitioning)
+        if (GameManager.Instance.State==GameState.Cinematic)
         {
             _currentColor=transitionImage.color;
             if (_currentColor.a <= 1)
@@ -28,7 +27,6 @@ public class MainMenu : MonoBehaviour
                 
                 if (_currentColor.a >= 1)
                 {
-                    _transitioning = false;
                     SceneManager.LoadScene("CafePrototype");
                 }
 

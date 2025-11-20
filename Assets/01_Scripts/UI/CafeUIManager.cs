@@ -1,9 +1,5 @@
-using System;
-using System.Collections;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class CafeUIManager : MonoBehaviour
@@ -88,19 +84,19 @@ public class CafeUIManager : MonoBehaviour
     public void StartOfDayFade()
     {
         StartCoroutine(_uiFadeEffects.DoFadeIn(fullScreenFade, Color.white));
-        TimeManager.InTransition = false;
+        GameManager.Instance.StartDay();
     }
 
     public void EndOfDayFade()
     {
-        TimeManager.InTransition = true;
+        GameManager.Instance.EndFullDay();
         HideInventory();
         StartCoroutine(_uiFadeEffects.DoFadeOut(fullScreenFade, Color.black));
     }
 
     public void DayOver()
     {
-        TimeManager.InTransition = true;
+        GameManager.Instance.EndCafeDay();
         StartCoroutine(_uiFadeEffects.DoFadeOut(endHourScreen, Color.black));
         StartCoroutine(_uiFadeEffects.ImageFlashEvent(resultFlash, eventFlashColor));
     }

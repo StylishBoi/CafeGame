@@ -3,45 +3,46 @@ using UnityEngine.Serialization;
 
 public class NPCManager : MonoBehaviour
 {
-    [Header("NPCs Settings")]
-    [SerializeField] private GameObject npcPrefab;
+    [Header("NPCs Settings")] [SerializeField]
+    private GameObject npcPrefab;
+
     [SerializeField] private GameObject spawnPosition;
-    
-    [Header("NPCs Cooldowns")]
-    [SerializeField] private float minNormalCoolDown;
+
+    [Header("NPCs Cooldowns")] [SerializeField]
+    private float minNormalCoolDown;
+
     [SerializeField] private float maxNormalCoolDown;
     [SerializeField] private float minRushHourCoolDown;
     [SerializeField] private float maxRushHourCoolDown;
     private bool _isRushHour;
-    public static bool IsDayOver;
-    private bool _dayReallyOver;
-    
+
     private float _costumerCoolDown;
     private float _customerTimer;
     private GameObject[] _seats;
     private CafeUIManager _cafeUIManager;
-    
+
+    [SerializeField] private TimeManager timeManager;
+
     private void OnEnable()
     {
-        TimeManager.OnHourChanged+=RushHour;
+        TimeManager.OnHourChanged += RushHour;
     }
 
     private void OnDisable()
     {
-        TimeManager.OnHourChanged-=RushHour;
+        TimeManager.OnHourChanged -= RushHour;
     }
+
     void Start()
     {
         _seats = GameObject.FindGameObjectsWithTag("Seat");
         Debug.Log(_seats.Length);
         _cafeUIManager = GameObject.FindGameObjectWithTag("UI").GetComponent<CafeUIManager>();
-        _dayReallyOver = false;
-        IsDayOver = false;
     }
 
     void Update()
     {
-        if (!IsDayOver && !TimeManager.InTransition)
+        if (GameManager.Instance.State == GameState.CafePlay)
         {
             if (_isRushHour)
             {
@@ -49,7 +50,7 @@ public class NPCManager : MonoBehaviour
                 {
                     AddCustomer();
                     _customerTimer = 0;
-                    _costumerCoolDown=Random.Range(minRushHourCoolDown, maxRushHourCoolDown);
+                    _costumerCoolDown = Random.Range(minRushHourCoolDown, maxRushHourCoolDown);
                 }
             }
             else
@@ -58,12 +59,13 @@ public class NPCManager : MonoBehaviour
                 {
                     AddCustomer();
                     _customerTimer = 0;
-                    _costumerCoolDown=Random.Range(minNormalCoolDown, maxNormalCoolDown);
+                    _costumerCoolDown = Random.Range(minNormalCoolDown, maxNormalCoolDown);
                 }
             }
+
             _customerTimer += Time.deltaTime;
         }
-        else if(!_dayReallyOver && IsDayOver)
+        else if (GameManager.Instance.State == GameState.BasicPlay)
         {
             EndOfDay();
         }
@@ -71,27 +73,29 @@ public class NPCManager : MonoBehaviour
 
     void RushHour()
     {
-        if (TimeManager.Hour == 11 || TimeManager.Hour == 17)
+        if (TimeManager.Hour == timeManager.rushHours[0].startHour ||
+            TimeManager.Hour == timeManager.rushHours[1].startHour)
         {
             Debug.Log("Rush Hour !");
             _isRushHour = true;
             _costumerCoolDown = 2f;
             _cafeUIManager.RushHour();
         }
-        else if (TimeManager.Hour == 13 || TimeManager.Hour == 19)
+        else if (TimeManager.Hour == timeManager.rushHours[0].endHour ||
+                 TimeManager.Hour == timeManager.rushHours[1].endHour)
         {
             Debug.Log("Rush Hour is finished");
             _isRushHour = false;
             _cafeUIManager.RushOver();
         }
-        else if (TimeManager.Hour == 21)
+        else if (TimeManager.Hour == timeManager.endDayHour)
         {
             Debug.Log("Day is finished");
-            IsDayOver = true;
+            GameManager.Instance.SwitchState(GameState.BasicPlay);
             _cafeUIManager.DayOver();
         }
     }
-    
+
     void AddCustomer()
     {
         for (int i = 0; i < _seats.Length; i++)
@@ -103,7 +107,7 @@ public class NPCManager : MonoBehaviour
             }
         }
     }
-    
+
     void EndOfDay()
     {
         for (int i = 0; i < _seats.Length; i++)
@@ -113,9 +117,10 @@ public class NPCManager : MonoBehaviour
                 return;
             }
         }
+
         Debug.Log("All clients left");
-        _dayReallyOver=true;
         CafeUIManager.Instance.EndOfDayFade();
+        GameManager.Instance.SwitchState(GameState.Cinematic);
     }
     //1 - Setup end of day procedure
     //2 - Make rush hour text last longer

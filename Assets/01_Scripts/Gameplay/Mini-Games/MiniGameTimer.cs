@@ -1,6 +1,5 @@
 using UnityEngine;
 using TMPro;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class MiniGameTimer : MonoBehaviour

@@ -136,8 +136,6 @@ public class UIFadeEffects : MonoBehaviour
         {
             tempText.rectTransform.anchoredPosition += new Vector2(0f, -25f) * Time.deltaTime;
             tempText.color = Color.Lerp(startcolor, endcolor, t);
-
-            Debug.Log(tempText.transform.position + " : It's here !");
             
             if (t < 1)
             {

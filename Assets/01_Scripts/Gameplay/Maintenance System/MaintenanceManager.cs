@@ -27,7 +27,7 @@ public class MaintenanceManager : MonoBehaviour
         {
             _timerForNextMaintenanceEvent += Time.deltaTime;
         }
-        else if (!TimeManager.InTransition)
+        else if (GameManager.Instance.State==GameState.CafePlay)
         {
             CreateMaintenanceEvent();
         }
