@@ -47,7 +47,7 @@ public class UIFadeEffects : MonoBehaviour
             yield return null;
         }
 
-        Destroy(tempImage);
+        Destroy(tempImage.gameObject);
     }
 
     public IEnumerator ImageFlashEvent(Image fadeImage, Color fadeColor, GameObject flashObject)
@@ -73,7 +73,7 @@ public class UIFadeEffects : MonoBehaviour
         }
 
         flashObject.SetActive(false);
-        Destroy(tempImage);
+        Destroy(tempImage.gameObject);
     }
 
     public IEnumerator DoFadeOut(Image fadeImage, Color fadeColor)
@@ -96,7 +96,7 @@ public class UIFadeEffects : MonoBehaviour
             yield return null;
         }
 
-        Destroy(tempImage);
+        Destroy(tempImage.gameObject);
         yield return null;
     }
 
@@ -120,7 +120,7 @@ public class UIFadeEffects : MonoBehaviour
             yield return null;
         }
 
-        Destroy(tempImage);
+        Destroy(tempImage.gameObject);
         yield return null;
     }
 

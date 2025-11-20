@@ -1,36 +1,42 @@
 using UnityEngine;
-using UnityEngine.Serialization;
+
+public enum RushModes
+{
+    RushOn,
+    RushOff
+}
+
 
 public class NPCManager : MonoBehaviour
 {
-    [Header("NPCs Settings")] [SerializeField]
-    private GameObject npcPrefab;
-
+    [Header("NPCs Settings")]
+    [SerializeField] private GameObject npcPrefab;
     [SerializeField] private GameObject spawnPosition;
 
-    [Header("NPCs Cooldowns")] [SerializeField]
-    private float minNormalCoolDown;
-
+    [Header("NPCs Cooldowns")]
+    [SerializeField] private float minNormalCoolDown;
     [SerializeField] private float maxNormalCoolDown;
     [SerializeField] private float minRushHourCoolDown;
     [SerializeField] private float maxRushHourCoolDown;
-    private bool _isRushHour;
 
+    private bool _isRushHour;
     private float _costumerCoolDown;
     private float _customerTimer;
+    
+    private RushModes _currentRushMode;
     private GameObject[] _seats;
     private CafeUIManager _cafeUIManager;
 
-    [SerializeField] private TimeManager timeManager;
-
     private void OnEnable()
     {
-        TimeManager.OnHourChanged += RushHour;
+        TimeManager.OnRushStart = StartRushHour;
+        TimeManager.OnRushOver = EndRushHour;
     }
 
     private void OnDisable()
     {
-        TimeManager.OnHourChanged -= RushHour;
+        TimeManager.OnRushOver -= StartRushHour;
+        TimeManager.OnRushOver -= EndRushHour;
     }
 
     void Start()
@@ -71,28 +77,26 @@ public class NPCManager : MonoBehaviour
         }
     }
 
-    void RushHour()
+    void StartRushHour()
     {
-        if (TimeManager.Hour == timeManager.rushHours[0].startHour ||
-            TimeManager.Hour == timeManager.rushHours[1].startHour)
+        if (_currentRushMode == RushModes.RushOff)
         {
             Debug.Log("Rush Hour !");
             _isRushHour = true;
             _costumerCoolDown = 2f;
             _cafeUIManager.RushHour();
+            _currentRushMode= RushModes.RushOn;
         }
-        else if (TimeManager.Hour == timeManager.rushHours[0].endHour ||
-                 TimeManager.Hour == timeManager.rushHours[1].endHour)
+    }
+
+    void EndRushHour()
+    {
+        if (_currentRushMode == RushModes.RushOn)
         {
             Debug.Log("Rush Hour is finished");
             _isRushHour = false;
             _cafeUIManager.RushOver();
-        }
-        else if (TimeManager.Hour == timeManager.endDayHour)
-        {
-            Debug.Log("Day is finished");
-            GameManager.Instance.SwitchState(GameState.BasicPlay);
-            _cafeUIManager.DayOver();
+            _currentRushMode = RushModes.RushOff;
         }
     }
 

@@ -1,32 +1,47 @@
 using UnityEngine;
 using System;
-using System.Collections.Generic;
 
-[Serializable]
-public struct RushHour
-{
-    public int startHour;
-    public int endHour;
-}
 
 public class TimeManager : MonoBehaviour
 {
+    [Serializable]
+    public struct InGameTime
+    {
+        public int hour;
+        public int minute;
+    }
+
+
+    [Serializable]
+    public struct RushHour
+    {
+        public InGameTime startHour;
+        public InGameTime endHour;
+    }
+
     public static Action OnMinuteChanged;
     public static Action OnHourChanged;
+    public static Action OnRushStart;
+    public static Action OnRushOver;
+
+    private InGameTime _currentTime;
 
     public static int Minute { get; private set; }
     public static int Hour { get; private set; }
 
-    [SerializeField] public int startDayHour;
-    [SerializeField] public int endDayHour;
-    [SerializeField] public RushHour[] rushHours=new RushHour[2];
+    [Header("Time Schedules")]
+    [SerializeField] public InGameTime startDayHour;
+    [SerializeField] public InGameTime endDayHour;
+    [SerializeField] public RushHour[] rushHours = new RushHour[2];
 
     private readonly float _minuteToRealTime = 1f;
     private float _timer;
 
     void Start()
     {
-        Hour = startDayHour;
+        Hour = startDayHour.hour;
+        Minute = startDayHour.minute;
+
         _timer = _minuteToRealTime;
     }
 
@@ -46,6 +61,36 @@ public class TimeManager : MonoBehaviour
             }
 
             _timer = _minuteToRealTime;
+            _currentTime.hour = Hour;
+            _currentTime.minute = Minute;
         }
+
+        CheckRushes();
+
+        if (CompareHours(endDayHour, _currentTime))
+        {
+            GameManager.Instance.SwitchState(GameState.BasicPlay);
+            CafeUIManager.Instance.DayOver();
+        }
+    }
+
+    private void CheckRushes()
+    {
+        for (int i = 0; i < rushHours.Length; i++)
+        {
+            if (CompareHours(rushHours[i].startHour, _currentTime))
+            {
+                OnRushStart?.Invoke();
+            }
+            else if (CompareHours(rushHours[i].endHour, _currentTime))
+            {
+                OnRushOver?.Invoke();
+            }
+        }
+    }
+
+    private bool CompareHours(InGameTime a, InGameTime b)
+    {
+        return (a.hour == b.hour && a.minute == b.minute);
     }
 }

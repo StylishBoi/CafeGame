@@ -1,11 +1,12 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class MoneyScoreUI : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI moneyText;
     [SerializeField] TextMeshProUGUI scoreEffect;
-    [SerializeField] UIFadeEffects _uiFadeEffects;
+    [SerializeField] UIFadeEffects uiFadeEffects;
 
     public void ScoreIncrease()
     {
@@ -27,6 +28,6 @@ public class MoneyScoreUI : MonoBehaviour
         }
 
         moneyText.text = ScoreSystem.MoneyScore + "$";
-        StartCoroutine(_uiFadeEffects.DoTextFadeMoveDown(scoreEffect));
+        StartCoroutine(uiFadeEffects.DoTextFadeMoveDown(scoreEffect));
     }
 }
