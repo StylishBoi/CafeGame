@@ -1,7 +1,9 @@
+using System.ComponentModel;
 using UnityEngine;
 using Pathfinding;
 using TMPro;
 using UnityEngine.Serialization;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class NPCAI : MonoBehaviour
 {
@@ -47,7 +49,6 @@ public class NPCAI : MonoBehaviour
     public bool servedGood;
     public bool servedBad;
     public float eatTimer;
-    public AIPath aiPath;
 
     //Animator Components
     private Animator _animator;
@@ -120,7 +121,6 @@ public class NPCAI : MonoBehaviour
         _moneyScoreUI = FindObjectOfType<MoneyScoreUI>();
         _animator = GetComponentInChildren<Animator>();
         if (TryGetComponent(out _unitController))
-            if (TryGetComponent(out aiPath))
 
                 //New AI Path
                 targetPosition = new Vector2Int((int)_targetSeat.position.x, (int)_targetSeat.position.y);
@@ -234,17 +234,24 @@ public class NPCAI : MonoBehaviour
             {
                 Item localItem = InventoryManager.Instance.GetSelectedItem(false);
 
-                if (_desiredItem == localItem && localItem.quality == _desiredItem.quality)
+                if (_desiredItem == localItem || _desiredItem.itemCode == localItem.itemCode - 1)
                 {
-                    _uIManager.Success();
-                    _moneyScoreUI.ScoreIncrease(localItem.score);
-                    StreakManager.StreakIncrease();
-                    servedGood = true;
-                }
-                else if (_desiredItem.itemCode == localItem.itemCode - 1 && localItem.quality != _desiredItem.quality)
-                {
-                    _uIManager.Mediocre();
-                    _moneyScoreUI.ScoreIncrease(localItem.score);
+                    switch (localItem.quality)
+                    {
+                        case Item.ItemQuality.Bad:
+                            _uIManager.Success();
+                            ScoreSystem.IncreaseScore(localItem.score);
+                            break;
+                        case Item.ItemQuality.Good:
+                            _uIManager.Mediocre();
+                            ScoreSystem.IncreaseScore(localItem.score);
+                            break;
+                        default:
+                            Debug.Log("Invalid item quality");
+                            break;
+                    }
+
+                    _moneyScoreUI.ScoreIncrease();
                     StreakManager.StreakIncrease();
                     servedGood = true;
                 }
@@ -254,7 +261,6 @@ public class NPCAI : MonoBehaviour
                     StreakManager.NegativeStreakIncrease();
                     servedBad = true;
                 }
-
                 itemPickUp.UseSelectedItem();
             }
         }

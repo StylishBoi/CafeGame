@@ -1,8 +1,5 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
-using UnityEngine.UI;
 
 public class EffectManager : MonoBehaviour
 {
@@ -48,12 +45,10 @@ public class EffectManager : MonoBehaviour
         if (_negativeCount > _positiveCount)
         {
             NegativeEffect = true;
-            Debug.Log(NegativeEffect + " negative effect");
         }
         else if (_positiveCount > _negativeCount)
         {
             PositiveEffect = true;
-            Debug.Log(PositiveEffect + " positive effect");
         }
         else
         {

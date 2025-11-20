@@ -7,35 +7,26 @@ public class MoneyScoreUI : MonoBehaviour
     [SerializeField] TextMeshProUGUI scoreEffect;
     [SerializeField] UIFadeEffects _uiFadeEffects;
 
-    private int _score = 0;
-    private int _itemScore;
-
-    public void ScoreIncrease(int score)
+    public void ScoreIncrease()
     {
 
         if (EffectManager.NegativeEffect)
         {
-            _itemScore = score - 2;
-            _score += score - 2;
-            scoreEffect.text = _itemScore.ToString();
+            scoreEffect.text = ScoreSystem.LastScore.ToString();
             scoreEffect.color = Color.red;
         }
         else if (EffectManager.PositiveEffect)
         {
-            _itemScore = score + 2;
-            _score += score + 2;
-            scoreEffect.text = _itemScore.ToString();
+            scoreEffect.text = ScoreSystem.LastScore.ToString();
             scoreEffect.color = Color.blue;
         }
         else
         {
-            _itemScore = score;
-            _score += score;
-            scoreEffect.text = _itemScore.ToString();
+            scoreEffect.text = ScoreSystem.LastScore.ToString();
             scoreEffect.color = Color.green;
         }
 
-        moneyText.text = _score + "$";
+        moneyText.text = ScoreSystem.MoneyScore + "$";
         StartCoroutine(_uiFadeEffects.DoTextFadeMoveDown(scoreEffect));
     }
 }
