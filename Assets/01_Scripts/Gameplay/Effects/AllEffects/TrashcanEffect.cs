@@ -17,12 +17,12 @@ public class TrashcanEffect : MonoBehaviour
         if (Trashcan.FillageRate>=3 && !_isActive)
         {
             _isActive = true;
-            _effectManager.PositiveEffectInc(icon);
+            _effectManager.NegativeEffectInc(icon);
         }
         else if (Trashcan.FillageRate == 0 && _isActive)
         {
             _isActive = false;
-            _effectManager.PositiveEffectDec(icon);
+            _effectManager.NegativeEffectDec(icon);
         }
     }
 }

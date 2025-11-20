@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,6 +10,13 @@ public class UIFadeEffects : MonoBehaviour
 
     [SerializeField] private float fadeOutDuration = 1f;
     [SerializeField] private float fadeInDuration = 1f;
+
+    private TextMeshProUGUI TemporaryVariableMaker(TextMeshProUGUI textSample)
+    {
+        TextMeshProUGUI tempText = Instantiate(textSample, textSample.transform.parent);
+        tempText.gameObject.SetActive(true);
+        return tempText;
+    }
 
     private Image TemporaryVariableMaker(Image imageSample, Color colorSample)
     {
@@ -113,6 +121,33 @@ public class UIFadeEffects : MonoBehaviour
         }
 
         Destroy(tempImage);
+        yield return null;
+    }
+
+    public IEnumerator DoTextFadeMoveDown(TextMeshProUGUI fadeText)
+    {
+        var tempText = TemporaryVariableMaker(fadeText);
+        
+        float t = 0.0f;
+        Color startcolor = tempText.color;
+        Color endcolor = new Color(tempText.color.r, tempText.color.g, tempText.color.b, 0);
+
+        while (tempText.color.a > 0)
+        {
+            tempText.rectTransform.anchoredPosition += new Vector2(0f, -25f) * Time.deltaTime;
+            tempText.color = Color.Lerp(startcolor, endcolor, t);
+
+            Debug.Log(tempText.transform.position + " : It's here !");
+            
+            if (t < 1)
+            {
+                t += Time.deltaTime / fadeOutDuration;
+            }
+
+            yield return null;
+        }
+
+        Destroy(tempText.gameObject);
         yield return null;
     }
 }

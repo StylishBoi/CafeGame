@@ -6,7 +6,8 @@ using UnityEngine.UI;
 
 public class EffectManager : MonoBehaviour
 {
-    [Header("Total Effect")] public static bool PositiveEffect;
+    [Header("Total Effect")]
+    public static bool PositiveEffect;
     public static bool NegativeEffect;
     private static int _negativeCount;
     private static int _positiveCount;
@@ -47,10 +48,12 @@ public class EffectManager : MonoBehaviour
         if (_negativeCount > _positiveCount)
         {
             NegativeEffect = true;
+            Debug.Log(NegativeEffect + " negative effect");
         }
         else if (_positiveCount > _negativeCount)
         {
             PositiveEffect = true;
+            Debug.Log(PositiveEffect + " positive effect");
         }
         else
         {

@@ -29,13 +29,13 @@ public class DirtyEffect : MonoBehaviour
         if (_timerTillDirty > maxTillDirty && !_isActive)
         {
             _isActive = true;
-            _effectManager.PositiveEffectInc(icon);
+            _effectManager.NegativeEffectInc(icon);
         }
         else if (MaintenanceManager.CurrentMaintenanceEvents.Count == 0 && _isActive)
         {
             _timerTillDirty = 0;
             _isActive = false;
-            _effectManager.PositiveEffectDec(icon);
+            _effectManager.NegativeEffectDec(icon);
         }
     }
 }
