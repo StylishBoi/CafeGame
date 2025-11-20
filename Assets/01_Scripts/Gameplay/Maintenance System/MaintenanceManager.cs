@@ -15,10 +15,6 @@ public class MaintenanceManager : MonoBehaviour
     private float _timerForNextMaintenanceEvent;
     private int _nextMaintenanceEvent;
     
-    [Header("Maintenance Effects")]
-    [SerializeField] private int timeTillEffect = 15;
-    private float _timeForMaintenanceEffect;
-    
     public static List<GameObject> CurrentMaintenanceEvents = new List<GameObject>(); 
 
     void Update()
@@ -31,12 +27,6 @@ public class MaintenanceManager : MonoBehaviour
         {
             CreateMaintenanceEvent();
         }
-
-        if (CurrentMaintenanceEvents.Count>0)
-        {
-            _timeForMaintenanceEffect+=Time.deltaTime;
-        }
-        
     }
 
     private void CreateMaintenanceEvent()

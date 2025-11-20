@@ -10,7 +10,7 @@ public class GoodStreakEffect : MonoBehaviour
 
     void Start()
     {
-        _effectManager = FindObjectOfType<EffectManager>();
+        _effectManager = FindFirstObjectByType<EffectManager>();
     }
     void FixedUpdate()
     {

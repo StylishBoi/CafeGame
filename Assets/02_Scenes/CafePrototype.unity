@@ -704,9 +704,8 @@ MonoBehaviour:
     m_Bits: 960
   spawnableAreaCollider: {fileID: 223206184}
   dishwasherSpawn: {x: 4.5, y: 1.5}
-  minMaintenanceTime: 5
-  maxMaintenanceTime: 10
-  timeTillEffect: 15
+  minMaintenanceTime: 15
+  maxMaintenanceTime: 20
 --- !u!1 &127422704
 GameObject:
   m_ObjectHideFlags: 0
@@ -5580,7 +5579,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dirtyIcon: {fileID: 8018792603150223407, guid: 3f79c78b32602f04fb6290936040008c, type: 3}
-  maxTillDirty: 5
   streakIcon: {fileID: 6697327146417711073, guid: 38dfe263b689eca4b84eec63028d5091, type: 3}
   badStreakIcon: {fileID: 6824852625155635563, guid: acdd4e478237d654e9af889caf8bea66, type: 3}
   trashcanIcon: {fileID: 6697327146417711073, guid: 502310c64cb6bbd41aaf2c902140a8db, type: 3}

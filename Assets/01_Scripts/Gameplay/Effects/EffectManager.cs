@@ -13,9 +13,6 @@ public class EffectManager : MonoBehaviour
     //[SerializeField] private Image dirtyIcon;
     [SerializeField]
     private GameObject dirtyIcon;
-
-    [SerializeField] private int maxTillDirty = 5;
-    private float _timerTillDirty = 0;
     private bool _isDirty;
 
     [Header("Streak Effect")] [SerializeField]

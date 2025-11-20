@@ -19,8 +19,6 @@ public class NPCAI : MonoBehaviour
     [Header("Arrival Phase")] [SerializeField] [Range(0, 1)]
     private float arrivalFactor = 1f;
 
-    [SerializeField] private float movementSpeed = 1f;
-
     [Header("Wait Phase")] [SerializeField] [Range(0, 1)]
     private float waitFactor = 1f;
 
@@ -113,7 +111,7 @@ public class NPCAI : MonoBehaviour
         _targetName = transform.parent.gameObject;
         _spawnpoint = GameObject.FindGameObjectWithTag("Spawnpoint").transform;
         _uIManager = GameObject.FindGameObjectWithTag("UI").GetComponent<CafeUIManager>();
-        _moneyScoreUI = FindObjectOfType<MoneyScoreUI>();
+        _moneyScoreUI = FindFirstObjectByType<MoneyScoreUI>();
         _animator = GetComponentInChildren<Animator>();
         if (TryGetComponent(out _unitController))
 
