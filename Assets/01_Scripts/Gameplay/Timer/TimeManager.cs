@@ -11,7 +11,6 @@ public class TimeManager : MonoBehaviour
         public int minute;
     }
 
-
     [Serializable]
     public struct RushHour
     {

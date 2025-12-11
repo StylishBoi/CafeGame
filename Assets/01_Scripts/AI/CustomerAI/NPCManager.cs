@@ -31,13 +31,13 @@ public class NPCManager : MonoBehaviour
 
     private void OnEnable()
     {
-        TimeManager.OnRushStart = StartRushHour;
-        TimeManager.OnRushOver = EndRushHour;
+        TimeManager.OnRushStart += StartRushHour;
+        TimeManager.OnRushOver += EndRushHour;
     }
 
     private void OnDisable()
     {
-        TimeManager.OnRushOver -= StartRushHour;
+        TimeManager.OnRushStart -= StartRushHour;
         TimeManager.OnRushOver -= EndRushHour;
     }
 

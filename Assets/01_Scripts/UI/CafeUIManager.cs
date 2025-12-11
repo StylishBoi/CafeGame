@@ -71,6 +71,15 @@ public class CafeUIManager : MonoBehaviour
         StartCoroutine(_uiFadeEffects.ImageFlashEvent(resultFlash, goodResultColor));
     }
 
+    public void Mediocre()
+    {
+        StartCoroutine(_uiFadeEffects.ImageFlashEvent(resultFlash, mediocreResultColor));
+    }
+    public void Failure()
+    {
+        StartCoroutine(_uiFadeEffects.ImageFlashEvent(resultFlash, badResultColor));
+    }
+
     public void RushHour()
     {
         StartCoroutine(_uiFadeEffects.ImageFlashEvent(resultFlash, eventFlashColor, rushHourScreen));
@@ -101,19 +110,10 @@ public class CafeUIManager : MonoBehaviour
         StartCoroutine(_uiFadeEffects.ImageFlashEvent(resultFlash, eventFlashColor));
     }
 
-    public void Mediocre()
-    {
-        StartCoroutine(_uiFadeEffects.ImageFlashEvent(resultFlash, mediocreResultColor));
-    }
 
     public void NewItem()
     {
         StartCoroutine(_uiFadeEffects.ImageFlashEvent(bottomFlash, Color.white));
-    }
-
-    public void Failure()
-    {
-        StartCoroutine(_uiFadeEffects.ImageFlashEvent(resultFlash, badResultColor));
     }
 
     public void StreakUpdate()
