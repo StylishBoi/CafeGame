@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class CafeUIManager : MonoBehaviour
@@ -19,6 +20,7 @@ public class CafeUIManager : MonoBehaviour
     [Header("Other UI Elements")] [SerializeField]
     private GameObject rushHourScreen;
 
+    [SerializeField] private GameObject endResultScreen;
     [SerializeField] private GameObject rushOverScreen;
     [SerializeField] private GameObject inventoryScreen;
     [SerializeField] private TextMeshProUGUI streakText;
@@ -99,8 +101,16 @@ public class CafeUIManager : MonoBehaviour
     public void EndOfDayFade()
     {
         GameManager.Instance.EndFullDay();
-        HideInventory();
+        endResultScreen.SetActive(false);
         StartCoroutine(_uiFadeEffects.DoFadeOut(fullScreenFade, Color.black));
+        SceneManager.LoadScene("MainMenu");
+    }
+    
+    
+    public void ScoreResult()
+    {
+        endResultScreen.gameObject.SetActive(true);
+        HideInventory();
     }
 
     public void DayOver()

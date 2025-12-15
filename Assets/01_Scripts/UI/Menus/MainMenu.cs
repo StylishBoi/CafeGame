@@ -14,6 +14,7 @@ public class MainMenu : MonoBehaviour
     public void StartGame()
     {
         GameManager.Instance.StartGame();
+        ScoreSystem.StartDay();
     }
 
     void Update()

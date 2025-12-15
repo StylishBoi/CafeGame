@@ -6,7 +6,8 @@ public enum GameState
     CafePlay,
     BasicPlay,
     Paused,
-    Cinematic
+    Cinematic,
+    TextBox
 }
 
 public class GameManager : MonoBehaviour

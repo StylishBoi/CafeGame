@@ -3,6 +3,7 @@ using UnityEngine;
 public static class StreakManager
 {
     public static int Streak;
+    public static int HighestStreak;
     public static int NegativeStreak;
     
     public static void StreakIncrease()
@@ -10,6 +11,7 @@ public static class StreakManager
         NegativeStreak = 0;
         Streak++;
         CafeUIManager.Instance.StreakUpdate();
+        UpdateHighestStreak();
     }
     
     public static void NegativeStreakIncrease()
@@ -17,5 +19,13 @@ public static class StreakManager
         Streak = 0;
         NegativeStreak++;
         CafeUIManager.Instance.StreakUpdate();
+    }
+
+    private static void UpdateHighestStreak()
+    {
+        if (HighestStreak < Streak)
+        {
+            HighestStreak = Streak;
+        }
     }
 }

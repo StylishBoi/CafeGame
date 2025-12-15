@@ -66,7 +66,7 @@ public class TimeManager : MonoBehaviour
 
         CheckRushes();
 
-        if (CompareHours(endDayHour, _currentTime))
+        if (CompareHours(endDayHour, _currentTime) && GameManager.Instance.State == GameState.CafePlay)
         {
             GameManager.Instance.SwitchState(GameState.BasicPlay);
             CafeUIManager.Instance.DayOver();
