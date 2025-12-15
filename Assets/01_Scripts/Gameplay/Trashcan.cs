@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Trashcan : MonoBehaviour
 {
@@ -32,6 +33,11 @@ public class Trashcan : MonoBehaviour
                 {
                     Debug.Log("Used item : " +receivedItem);
                     FillageRate++;
+                }
+                else if (FillageRate == 3)
+                {
+                    SceneManager.LoadScene("Trashcan", LoadSceneMode.Additive);
+                    FillageRate = 0;
                 }
                 else
                 {

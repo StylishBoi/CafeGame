@@ -1,5 +1,4 @@
 using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 using UnityEngine;
 
 public class MinigameDetector : MonoBehaviour
