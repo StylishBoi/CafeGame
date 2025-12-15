@@ -1,34 +1,32 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EffectManager : MonoBehaviour
 {
-    [Header("Total Effect")]
-    public static bool PositiveEffect;
+    [Header("Total Effect")] public static bool PositiveEffect;
     public static bool NegativeEffect;
     private static int _negativeCount;
     private static int _positiveCount;
 
-    [Header("Dirty Effect")]
-    //[SerializeField] private Image dirtyIcon;
-    [SerializeField]
+    [Header("Status Colors")] [SerializeField]
+    private Color goodStatus;
+
+    [SerializeField] private Color neutralStatus;
+    [SerializeField] private Color badStatus;
+    [SerializeField] private Image backgroundImage;
+
+    [Header("Dirty Effect")] [SerializeField]
     private GameObject dirtyIcon;
-    private bool _isDirty;
 
     [Header("Streak Effect")] [SerializeField]
     private GameObject streakIcon;
 
-    private bool _isInStreak;
-
     [Header("Negative Streak Effect")] [SerializeField]
     private GameObject badStreakIcon;
 
-    private bool _isInBadStreak;
-
     [Header("Trashcan Effect")] [SerializeField]
     private GameObject trashcanIcon;
-
-    private bool _isTrashed;
 
     [Header("Effect Display")] [SerializeField]
     private RectTransform effectPanel;
@@ -36,7 +34,7 @@ public class EffectManager : MonoBehaviour
     private List<GameObject> _effectSlots = new List<GameObject>();
     private static int _totalEffect;
 
-    private void FixedUpdate()
+    private void StatusCheck()
     {
         //Status effects
         if (_negativeCount > _positiveCount)
@@ -65,6 +63,7 @@ public class EffectManager : MonoBehaviour
             _effectSlots.Add(effect);
         }
 
+        StatusCheck();
         UpdateEffectDisplay();
     }
 
@@ -98,12 +97,25 @@ public class EffectManager : MonoBehaviour
 
     private void UpdateEffectDisplay()
     {
+        if (PositiveEffect)
+        {
+            backgroundImage.color = goodStatus;
+        }
+        else if (NegativeEffect)
+        {
+            backgroundImage.color = badStatus;
+        }
+        else
+        {
+            backgroundImage.color = neutralStatus;
+        }
+
         foreach (Transform child in effectPanel.transform)
         {
             Destroy(child.gameObject);
         }
 
-        //Creates the list of health slots
+        //Creates the list of effect slots
         GameObject newSlot;
         int rowIncrease = 0;
         int columnIncrease = 1;
@@ -121,7 +133,7 @@ public class EffectManager : MonoBehaviour
             }
 
             newSlot = Instantiate(_effectSlots[i], effectPanel);
-            newSlot.transform.position = new Vector3(effectPanel.position.x + 250, effectPanel.position.y - 200) +
+            newSlot.transform.position = new Vector3(effectPanel.position.x + 230, effectPanel.position.y - 180) +
                                          new Vector3(-columnIncrease * 100, rowIncrease * 100, 0);
             newSlot.name = ("EffectSlot " + (i));
         }

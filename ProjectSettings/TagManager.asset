@@ -15,6 +15,7 @@ TagManager:
   - Dishwasher
   - Unit
   - Tile
+  - Trashbag
   layers:
   - Default
   - TransparentFX
