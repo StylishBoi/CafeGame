@@ -2616,7 +2616,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6117647, g: 0.6745098, b: 0.72156864, a: 1}
+  m_Color: {r: 0.6117647, g: 0.6745098, b: 0.72156864, a: 0.39215687}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -5643,9 +5643,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ad301f1b89699b4fa896f75fe3bf126, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goodStatus: {r: 0.75686276, g: 0.88235295, b: 0.75686276, a: 1}
-  neutralStatus: {r: 0.50980395, g: 0.5647059, b: 0.6039216, a: 1}
-  badStatus: {r: 0.98039216, g: 0.627451, b: 0.627451, a: 1}
+  goodStatus: {r: 0.75686276, g: 0.88235295, b: 0.75686276, a: 0.39215687}
+  neutralStatus: {r: 0.50980395, g: 0.5647059, b: 0.6039216, a: 0.39215687}
+  badStatus: {r: 0.98039216, g: 0.627451, b: 0.627451, a: 0.39215687}
   backgroundImage: {fileID: 547820704}
   dirtyIcon: {fileID: 8018792603150223407, guid: 3f79c78b32602f04fb6290936040008c, type: 3}
   streakIcon: {fileID: 6697327146417711073, guid: 38dfe263b689eca4b84eec63028d5091, type: 3}
@@ -6062,7 +6062,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.39215687}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -8987,7 +8987,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.39215687}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

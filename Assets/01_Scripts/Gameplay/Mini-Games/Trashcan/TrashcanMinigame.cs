@@ -1,7 +1,11 @@
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TrashcanMinigame : MonoBehaviour
 {
+    [SerializeField]
+    private List<Image> trashcanIcons;
     [SerializeField]
     private GameObject trashBag;
     [SerializeField]
