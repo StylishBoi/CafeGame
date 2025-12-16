@@ -18,9 +18,9 @@ public class CoffeeIncrease : MonoBehaviour
             this.transform.localPosition += new Vector3(0f, 0.2f, 0f)*Time.deltaTime;
         }
         
-        if (MinigameInput.GetInstance().GetInteractPressed() && pipeStopped == false)
+        if (MinigameInput.Instance.GetInteractPressed() && pipeStopped == false)
         {
-            Debug.Log(MinigameInput.GetInstance().GetInteractPressed());
+            Debug.Log(MinigameInput.Instance.GetInteractPressed());
             pipeStopped = true;
             
             if (success)

@@ -70,22 +70,22 @@ public class MilkshakeMinigame : MonoBehaviour
     {
         buttonCoolDown += Time.deltaTime;
         
-        if (MinigameInput.GetInstance().GetMoveUPressed())
+        if (MinigameInput.Instance.GetMoveUPressed())
         {
             Debug.Log("Up was pressed");
             currentPress = 0;
         }
-        else if (MinigameInput.GetInstance().GetMoveRPressed())
+        else if (MinigameInput.Instance.GetMoveRPressed())
         {
             Debug.Log("Right was pressed");
             currentPress = 1;
         }
-        else if (MinigameInput.GetInstance().GetMoveDPressed())
+        else if (MinigameInput.Instance.GetMoveDPressed())
         {
             Debug.Log("Down was pressed");
             currentPress = 2;
         }
-        else if (MinigameInput.GetInstance().GetMoveLPressed())
+        else if (MinigameInput.Instance.GetMoveLPressed())
         {
             Debug.Log("Left was pressed");
             currentPress = 3;

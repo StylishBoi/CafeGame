@@ -103,6 +103,7 @@ public class CafeUIManager : MonoBehaviour
         GameManager.Instance.EndFullDay();
         endResultScreen.SetActive(false);
         StartCoroutine(_uiFadeEffects.DoFadeOut(fullScreenFade, Color.black));
+        GameManager.Instance.SendToMenu();
         SceneManager.LoadScene("MainMenu");
     }
     

@@ -1,9 +1,9 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using Vector2 = System.Numerics.Vector2;
 
 public class MinigameInput : MonoBehaviour
 {
+    public static MinigameInput Instance { get; private set; }
     
     private bool interactPressed;
     private bool submitPressed;
@@ -11,141 +11,100 @@ public class MinigameInput : MonoBehaviour
     private bool moveRPressed;
     private bool moveUPressed;
     private bool moveDPressed;
+    private bool moveLHeld;
+    private bool moveRHeld;
     
     private Vector2 mousePosition;
     
-    private static MinigameInput instance;
-    float buttonCoolDown;
+    private float horizontalInput;
+    private float lastInputTime;
+    private const float inputCooldown = 0.2f;
 
     private void Awake()
     {
-        if (instance != null)
+        if (Instance != null)
         {
             Debug.LogError("Found more than one Input Manager in the scene.");
         }
-        instance = this;
+        Instance = this;
     }
     
-    private void Update()
+    private bool CanAcceptInput()
     {
-        buttonCoolDown +=1*Time.deltaTime;
+        if (Time.time - lastInputTime < inputCooldown)
+            return false;
+
+        lastInputTime = Time.time;
+        return true;
     }
 
-    public static MinigameInput GetInstance() 
+    private void HandleButton(InputAction.CallbackContext context, ref bool flag)
     {
-        return instance;
+        if (context.performed && CanAcceptInput())
+            flag = true;
+        else if (context.canceled)
+            flag = false;
     }
     
-    public void InteractButtonPressed(InputAction.CallbackContext context)
+    public void HeldMoveLeft(InputAction.CallbackContext context)
     {
-        if (context.performed&& buttonCoolDown>0.2f)
-        {
-            interactPressed = true;
-        }
-        else if (context.canceled)
-        {
-            interactPressed = false;
-        } 
+        if (context.started)
+            moveLHeld = true;
+
+        if (context.canceled)
+            moveLHeld = false;
+    }
+
+    public void HeldMoveRight(InputAction.CallbackContext context)
+    {
+        if (context.started)
+            moveRHeld = true;
+
+        if (context.canceled)
+            moveRHeld = false;
     }
     
-    public void SubmitPressed(InputAction.CallbackContext context)
+    public void Interact(InputAction.CallbackContext context)
+        => HandleButton(context, ref interactPressed);
+
+    public void Submit(InputAction.CallbackContext context)
+        => HandleButton(context, ref submitPressed);
+
+    public void MoveLeft(InputAction.CallbackContext context)
+        => HandleButton(context, ref moveLPressed);
+
+    public void MoveRight(InputAction.CallbackContext context)
+        => HandleButton(context, ref moveRPressed);
+
+    public void MoveUp(InputAction.CallbackContext context)
+        => HandleButton(context, ref moveUPressed);
+
+    public void MoveDown(InputAction.CallbackContext context)
+        => HandleButton(context, ref moveDPressed);
+    
+    public void MoveHorizontal(InputAction.CallbackContext context)
     {
-        if (context.performed&& buttonCoolDown>0.2f)
-        {
-            submitPressed = true;
-        }
-        else if (context.canceled)
-        {
-            submitPressed = false;
-        } 
+        Debug.Log("Move Horizontal has been read");
+        horizontalInput = context.ReadValue<float>();
     }
     
-    public void MoveLPressed(InputAction.CallbackContext context)
+    public int GetHorizontalHeld()
     {
-        if (context.performed&& buttonCoolDown>0.2f)
-        {
-            moveLPressed = true;
-        }
-        else if (context.canceled)
-        {
-            moveLPressed = false;
-        } 
+        return (moveRHeld ? 1 : 0) - (moveLHeld ? 1 : 0);
     }
     
-    public void MoveRPressed(InputAction.CallbackContext context)
+    private bool Consume(ref bool value)
     {
-        if (context.performed&& buttonCoolDown>0.2f)
-        {
-            moveRPressed = true;
-        }
-        else if (context.canceled)
-        {
-            moveRPressed = false;
-        } 
-    }
-    
-    public void MoveUPressed(InputAction.CallbackContext context)
-    {
-        if (context.performed&& buttonCoolDown>0.2f)
-        {
-            moveUPressed = true;
-        }
-        else if (context.canceled)
-        {
-            moveUPressed = false;
-        } 
-    }
-    
-    public void MoveDPressed(InputAction.CallbackContext context)
-    {
-        if (context.performed&& buttonCoolDown>0.2f)
-        {
-            moveDPressed = true;
-        }
-        else if (context.canceled)
-        {
-            moveDPressed = false;
-        } 
-    }
-        
-    public bool GetInteractPressed() 
-    {
-        bool result = interactPressed;
-        interactPressed = false;
+        bool result = value;
+        value = false;
         return result;
     }
 
-    public bool GetMoveLPressed() 
-    {
-        bool result = moveLPressed;
-        moveLPressed = false;
-        return result;
-    }
-    
-    public bool GetMoveRPressed() 
-    {
-        bool result = moveRPressed;
-        moveRPressed = false;
-        return result;
-    }
-    
-    public bool GetMoveUPressed() 
-    {
-        bool result = moveUPressed;
-        moveUPressed = false;
-        return result;
-    }
-    
-    public bool GetMoveDPressed() 
-    {
-        bool result = moveDPressed;
-        moveDPressed = false;
-        return result;
-    }
-
-    public void RegisterSubmitPressed() 
-    {
-        submitPressed = false;
-    }
+    public bool GetInteractPressed() => Consume(ref interactPressed);
+    public bool GetSubmitPressed()   => Consume(ref submitPressed);
+    public bool GetMoveLPressed()    => Consume(ref moveLPressed);
+    public bool GetMoveRPressed()    => Consume(ref moveRPressed);
+    public bool GetMoveUPressed()    => Consume(ref moveUPressed);
+    public bool GetMoveDPressed()    => Consume(ref moveDPressed);
 }
 

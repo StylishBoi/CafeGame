@@ -22,12 +22,12 @@ public class FloorMop : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (MinigameInput.GetInstance().GetMoveLPressed() && repeat)
+        if (MinigameInput.Instance.GetMoveLPressed() && repeat)
         {
             this.transform.localPosition += new Vector3(-80f, 0f, 0f)*Time.deltaTime;
             SweepEvent();
         }
-        else if (MinigameInput.GetInstance().GetMoveRPressed() && !repeat)
+        else if (MinigameInput.Instance.GetMoveRPressed() && !repeat)
         {
             this.transform.localPosition += new Vector3(80f, 0f, 0f)*Time.deltaTime;
             SweepEvent();

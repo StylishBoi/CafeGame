@@ -1,4 +1,5 @@
 {
+    "version": 1,
     "name": "MinigameInput",
     "maps": [
         {
@@ -38,7 +39,7 @@
                     "id": "666af497-5472-4c69-b766-d77249090568",
                     "expectedControlType": "",
                     "processors": "",
-                    "interactions": "Press",
+                    "interactions": "",
                     "initialStateCheck": true
                 },
                 {
@@ -47,7 +48,7 @@
                     "id": "2f58845f-fa80-493c-a99f-8bc7b051f66d",
                     "expectedControlType": "",
                     "processors": "",
-                    "interactions": "Press",
+                    "interactions": "",
                     "initialStateCheck": true
                 },
                 {
@@ -65,7 +66,7 @@
                     "id": "f51e35f1-7589-4575-bcb7-ff5bc43bcf1c",
                     "expectedControlType": "",
                     "processors": "",
-                    "interactions": "Press",
+                    "interactions": "",
                     "initialStateCheck": true
                 }
             ],
