@@ -8,8 +8,8 @@ public class UIFadeEffects : MonoBehaviour
     [Header("Effects Durations")] [SerializeField]
     private float flashDuration = 1f;
 
-    [SerializeField] private float fadeOutDuration = 1f;
-    [SerializeField] private float fadeInDuration = 1f;
+    public float fadeOutDuration = 1f;
+    public float fadeInDuration = 1f;
 
     private TextMeshProUGUI TemporaryVariableMaker(TextMeshProUGUI textSample)
     {
@@ -78,33 +78,28 @@ public class UIFadeEffects : MonoBehaviour
 
     public IEnumerator DoFadeOut(Image fadeImage, Color fadeColor)
     {
-        var tempImage = TemporaryVariableMaker(fadeImage, fadeColor);
+        Image tempImage = TemporaryVariableMaker(fadeImage, fadeColor);
 
-        Color startcolor = tempImage.color;
-        Color endcolor = new Color(tempImage.color.r, tempImage.color.g, tempImage.color.b, 1);
+        Color startColor = new Color(tempImage.color.r, tempImage.color.g, tempImage.color.b, 0);;
+        Color endColor = new Color(tempImage.color.r, tempImage.color.g, tempImage.color.b, 1); // fully opaque
 
-        float t = 0.0f;
+        float t = 0f;
 
-        while (tempImage.color.a > 0)
+        while (t < 1f)
         {
-            tempImage.color = Color.Lerp(startcolor, endcolor, t);
-            if (t < 1)
-            {
-                t += Time.deltaTime / fadeOutDuration;
-            }
-
+            tempImage.color = Color.Lerp(startColor, endColor, t);
+            t += Time.deltaTime / fadeOutDuration;
             yield return null;
         }
 
         Destroy(tempImage.gameObject);
-        yield return null;
     }
 
     public IEnumerator DoFadeIn(Image fadeImage, Color fadeColor)
     {
         var tempImage = TemporaryVariableMaker(fadeImage, fadeColor);
 
-        Color startcolor = tempImage.color;
+        Color startcolor = new Color(tempImage.color.r, tempImage.color.g, tempImage.color.b, 1);;
         Color endcolor = new Color(tempImage.color.r, tempImage.color.g, tempImage.color.b, 0);
 
         float t = 0.0f;

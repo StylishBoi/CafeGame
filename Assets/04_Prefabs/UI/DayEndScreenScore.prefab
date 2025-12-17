@@ -119,6 +119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c693cc155e2d89540b169e93663d09c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dayText: {fileID: 6101866258800836553}
   customerText: {fileID: 3371673547869277680}
   moneyText: {fileID: 3656761651979302147}
   streakText: {fileID: 8127557504628122348}

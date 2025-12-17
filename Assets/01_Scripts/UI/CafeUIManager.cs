@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -17,9 +18,9 @@ public class CafeUIManager : MonoBehaviour
     [SerializeField] private Color goodResultColor;
     [SerializeField] private Color eventFlashColor;
 
-    [Header("Other UI Elements")] [SerializeField]
-    private GameObject rushHourScreen;
-
+    [Header("Other UI Elements")]
+    [SerializeField] private GameObject rushHourReminder;
+    [SerializeField] private GameObject rushHourScreen;
     [SerializeField] private GameObject endResultScreen;
     [SerializeField] private GameObject rushOverScreen;
     [SerializeField] private GameObject inventoryScreen;
@@ -50,7 +51,7 @@ public class CafeUIManager : MonoBehaviour
 
     private void Start()
     {
-        StartOfDayFade();
+        StartCoroutine(StartOfDayFade());
     }
 
     public void HideUI()
@@ -84,25 +85,32 @@ public class CafeUIManager : MonoBehaviour
 
     public void RushHour()
     {
+        rushHourReminder.SetActive(true);
         StartCoroutine(_uiFadeEffects.ImageFlashEvent(resultFlash, eventFlashColor, rushHourScreen));
     }
 
     public void RushOver()
     {
+        rushHourReminder.SetActive(false);
         StartCoroutine(_uiFadeEffects.ImageFlashEvent(resultFlash, eventFlashColor, rushOverScreen));
     }
 
-    public void StartOfDayFade()
+    public IEnumerator StartOfDayFade()
     {
-        StartCoroutine(_uiFadeEffects.DoFadeIn(fullScreenFade, Color.white));
+        yield return StartCoroutine(_uiFadeEffects.DoFadeIn(fullScreenFade, Color.white));
         GameManager.Instance.StartDay();
     }
 
     public void EndOfDayFade()
     {
+        StartCoroutine(EndOfDayFadeEnumerator());
+    }
+
+    public IEnumerator EndOfDayFadeEnumerator()
+    {
         GameManager.Instance.EndFullDay();
         endResultScreen.SetActive(false);
-        StartCoroutine(_uiFadeEffects.DoFadeOut(fullScreenFade, Color.black));
+        yield return StartCoroutine(_uiFadeEffects.DoFadeOut(fullScreenFade, Color.black));
         GameManager.Instance.SendToMenu();
         SceneManager.LoadScene("MainMenu");
     }
@@ -110,6 +118,7 @@ public class CafeUIManager : MonoBehaviour
     
     public void ScoreResult()
     {
+        HideUI();
         endResultScreen.gameObject.SetActive(true);
         HideInventory();
     }
@@ -117,7 +126,7 @@ public class CafeUIManager : MonoBehaviour
     public void DayOver()
     {
         GameManager.Instance.EndCafeDay();
-        StartCoroutine(_uiFadeEffects.DoFadeOut(endHourScreen, Color.black));
+        //StartCoroutine(_uiFadeEffects.DoFadeOut(endHourScreen, Color.black));
         StartCoroutine(_uiFadeEffects.ImageFlashEvent(resultFlash, eventFlashColor));
     }
 

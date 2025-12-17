@@ -116,13 +116,13 @@ public class MilkshakeMinigame : MonoBehaviour
                 _listOfArrowButtons[currentPosition].BadClicked();
                 buttonCoolDown = 0;
                 InventoryManager.Instance.AddItem(badMinigameItem);
-                StartCoroutine(waiter());
+                StartCoroutine(MinigameLeave());
             }
 
             if (currentPosition > arrowOrderInts.Length - 1)
             {
                 InventoryManager.Instance.AddItem(goodMinigameItem);
-                StartCoroutine(waiter());
+                StartCoroutine(MinigameLeave());
             }
         }
     }
@@ -136,7 +136,7 @@ public class MilkshakeMinigame : MonoBehaviour
         }
     }
 
-    IEnumerator waiter()
+    IEnumerator MinigameLeave()
     {
         yield return new WaitForSeconds(0.5f);
         

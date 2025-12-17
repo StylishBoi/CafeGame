@@ -4,14 +4,25 @@ using UnityEngine.UI;
 
 public class EffectManager : MonoBehaviour
 {
-    [Header("Total Effect")] public static bool PositiveEffect;
+    [Header("Total Effect")] 
+    public static bool PositiveEffect;
     public static bool NegativeEffect;
     private static int _negativeCount;
     private static int _positiveCount;
 
-    [Header("Status Colors")] [SerializeField]
-    private Color goodStatus;
-
+    [Header("ArrowBox")]
+    [SerializeField] private GameObject arrowBox;
+    [SerializeField] private Image arrowImageBox;
+    [SerializeField] private Image arrowColorBox;
+    
+    [Header("ArrowSettings")]
+    [SerializeField] private Sprite upArrow;
+    [SerializeField] private Color positiveArrowColor;
+    [SerializeField] private Sprite downArrow;
+    [SerializeField] private Color negativeArrowColor;
+    
+    [Header("Status Colors")]
+    [SerializeField] private Color goodStatus;
     [SerializeField] private Color neutralStatus;
     [SerializeField] private Color badStatus;
     [SerializeField] private Image backgroundImage;
@@ -99,14 +110,21 @@ public class EffectManager : MonoBehaviour
     {
         if (PositiveEffect)
         {
+            arrowBox.SetActive(true);
             backgroundImage.color = goodStatus;
+            arrowColorBox.color = positiveArrowColor;
+            arrowImageBox.sprite=upArrow;
         }
         else if (NegativeEffect)
         {
+            arrowBox.SetActive(true);
             backgroundImage.color = badStatus;
+            arrowColorBox.color = negativeArrowColor;
+            arrowImageBox.sprite=downArrow;
         }
         else
         {
+            arrowBox.SetActive(false);
             backgroundImage.color = neutralStatus;
         }
 

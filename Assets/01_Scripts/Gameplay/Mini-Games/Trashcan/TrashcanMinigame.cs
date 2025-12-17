@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 public class TrashcanMinigame : MonoBehaviour
 {
@@ -28,7 +29,7 @@ public class TrashcanMinigame : MonoBehaviour
 
         if (trashCount >= 3)
         {
-            MinigameManager.MiniGameEnd();
+            StartCoroutine(MinigameLeave());
         }
     }
 
@@ -43,5 +44,12 @@ public class TrashcanMinigame : MonoBehaviour
         var randomY = Random.Range(minBounds.y, maxBounds.y);
         
         return new Vector2(randomX, randomY);
+    }
+    
+    IEnumerator MinigameLeave()
+    {
+        yield return new WaitForSeconds(0.5f);
+        
+        MinigameManager.MiniGameEnd();
     }
 }
