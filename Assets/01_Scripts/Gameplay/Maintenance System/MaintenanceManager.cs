@@ -7,7 +7,7 @@ public class MaintenanceManager : MonoBehaviour
     [SerializeField] private List<GameObject> maintenanceEvents;
     [SerializeField] private LayerMask unSpawnableLayers;
     [SerializeField] private Collider2D spawnableAreaCollider;
-    [SerializeField] private Vector2 dishwasherSpawn;
+    [SerializeField] private GameObject dishwasherSpawn;
     
     [Header("Maintenance Time")]
     [SerializeField] private int minMaintenanceTime = 15;
@@ -19,6 +19,10 @@ public class MaintenanceManager : MonoBehaviour
 
     void Update()
     {
+        if (ScoreSystem.CustomersServed % 5 == 0)
+        {
+            dishwasherSpawn.SetActive(true);
+        }
         if (_timerForNextMaintenanceEvent < _nextMaintenanceEvent)
         {
             _timerForNextMaintenanceEvent += Time.deltaTime;
@@ -47,8 +51,6 @@ public class MaintenanceManager : MonoBehaviour
 
         if (random == 1)
         {
-            var newMaintenanceEvent = Instantiate(maintenanceEvents[random], dishwasherSpawn, Quaternion.identity, transform);
-            CurrentMaintenanceEvents.Add(newMaintenanceEvent);
         }
         
         //Set stats for next time
