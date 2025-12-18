@@ -16,6 +16,6 @@ public class DayEndUIScreen : MonoBehaviour
         customerText.text = ScoreSystem.CustomersServed.ToString();
         moneyText.text=ScoreSystem.MoneyScore.ToString();
         streakText.text=StreakManager.HighestStreak.ToString();
-        totalScoreText.text=ScoreSystem.TotalMoneyScore.ToString();
+        totalScoreText.text = ScoreSystem.TotalMoneyScore.ToString("0000000");
     }
 }

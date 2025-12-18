@@ -11,6 +11,7 @@ public class GoodStreakEffect : MonoBehaviour
     void Start()
     {
         _effectManager = FindFirstObjectByType<EffectManager>();
+        _isActive = false;
     }
     void FixedUpdate()
     {

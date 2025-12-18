@@ -15,6 +15,7 @@ public static class ScoreSystem
         CustomersServed = 0;
         MoneyScore = 0;
         LastScore = 0;
+        EffectManager.DayReset();
         StreakManager.HighestStreak = 0;
         StreakManager.Streak = 0;
     }

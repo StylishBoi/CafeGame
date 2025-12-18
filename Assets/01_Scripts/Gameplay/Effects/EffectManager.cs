@@ -45,6 +45,13 @@ public class EffectManager : MonoBehaviour
     private List<GameObject> _effectSlots = new List<GameObject>();
     private static int _totalEffect;
 
+    public static void DayReset()
+    {
+        _negativeCount = 0;
+        _positiveCount = 0;
+        _totalEffect = 0;
+    }
+    
     private void StatusCheck()
     {
         //Status effects
