@@ -32,7 +32,7 @@ public class MiniGameTimer : MonoBehaviour
             timeLeft = 0;
             countdownText.text = timeLeft.ToString("0");
             InventoryManager.Instance.AddItem(badMinigameItem);
-            MinigameManager.MiniGameEnd();
+            MinigameManager.Instance.MiniGameEnd();
         }
     }
 }

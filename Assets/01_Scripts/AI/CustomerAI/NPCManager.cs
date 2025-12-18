@@ -124,9 +124,11 @@ public class NPCManager : MonoBehaviour
             }
         }
 
-        Debug.Log("All clients left");
-        CafeUIManager.Instance.ScoreResult();
-        GameManager.Instance.SwitchState(GameState.TextBox);
+        if(MinigameManager.Instance.State==MinigameState.OutGame)
+        {
+            GameManager.Instance.SwitchState(GameState.TextBox);
+            CafeUIManager.Instance.ScoreResult();
+        }
     }
     //1 - Setup end of day procedure
     //2 - Make rush hour text last longer

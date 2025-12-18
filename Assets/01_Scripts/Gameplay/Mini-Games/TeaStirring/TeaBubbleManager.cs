@@ -41,7 +41,7 @@ public class TeaBubbleManager : MonoBehaviour
         
         if (_currentRotation >= _totalRotations)
         {
-            MinigameManager.MiniGameEnd();
+            MinigameManager.Instance.MiniGameEnd();
             InventoryManager.Instance.AddItem(goodMinigameItem);
         }
     }

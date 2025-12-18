@@ -50,6 +50,6 @@ public class TrashcanMinigame : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
         
-        MinigameManager.MiniGameEnd();
+        MinigameManager.Instance.MiniGameEnd();
     }
 }

@@ -26,12 +26,12 @@ public class CoffeeIncrease : MonoBehaviour
             if (success)
             {
                 InventoryManager.Instance.AddItem(goodMinigameItem);
-                MinigameManager.MiniGameEnd();
+                MinigameManager.Instance.MiniGameEnd();
             }
             else
             {
                 InventoryManager.Instance.AddItem(badMinigameItem);
-                MinigameManager.MiniGameEnd();
+                MinigameManager.Instance.MiniGameEnd();
             }
         }
     }
@@ -45,7 +45,7 @@ public class CoffeeIncrease : MonoBehaviour
             Debug.Log("Not a success");
             pipeStopped = true;
             InventoryManager.Instance.AddItem(badMinigameItem);
-            MinigameManager.MiniGameEnd();
+            MinigameManager.Instance.MiniGameEnd();
         }
         
         else if (collision.CompareTag("SuccessZone"))

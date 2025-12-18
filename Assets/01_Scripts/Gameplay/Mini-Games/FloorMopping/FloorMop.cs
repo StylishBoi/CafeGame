@@ -35,7 +35,7 @@ public class FloorMop : MonoBehaviour
 
         if (sweepsCount >= sweepsTotal)
         {
-            MinigameManager.MiniGameEnd();
+            MinigameManager.Instance.MiniGameEnd();
         }
     }
 

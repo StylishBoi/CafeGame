@@ -12,7 +12,7 @@ public class Dishwasher : MonoBehaviour
             
             if (platesInMachine >= 3)
             {
-                MinigameManager.MiniGameEnd();
+                MinigameManager.Instance.MiniGameEnd();
             }
         }
     }

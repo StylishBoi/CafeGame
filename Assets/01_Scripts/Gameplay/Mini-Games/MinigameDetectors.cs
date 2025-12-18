@@ -34,9 +34,10 @@ public class MinigameDetector : MonoBehaviour
         if (playerInRange && InventoryManager.Instance.slotsInUsage!=3)
         {
             visualCue.SetActive(true);
-            if (InputManager.GetInstance().GetInteractPressed())
+            if (InputManager.GetInstance().GetInteractPressed() && (GameManager.Instance.State==GameState.CafePlay || GameManager.Instance.State==GameState.BasicPlay))
             {
                 SceneManager.LoadScene(minigameScene.ToString(), LoadSceneMode.Additive);
+                MinigameManager.Instance.EnterMinigame();
                 if (maintenanceItem)
                 {
                     Destroy(gameObject);
