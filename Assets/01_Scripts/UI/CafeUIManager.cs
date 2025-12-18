@@ -97,6 +97,7 @@ public class CafeUIManager : MonoBehaviour
 
     public IEnumerator StartOfDayFade()
     {
+        fullScreenFade.gameObject.SetActive(false);
         yield return StartCoroutine(_uiFadeEffects.DoFadeIn(fullScreenFade, Color.white));
         GameManager.Instance.StartDay();
     }
@@ -106,11 +107,12 @@ public class CafeUIManager : MonoBehaviour
         StartCoroutine(EndOfDayFadeEnumerator());
     }
 
-    public IEnumerator EndOfDayFadeEnumerator()
+    private IEnumerator EndOfDayFadeEnumerator()
     {
         GameManager.Instance.EndFullDay();
         endResultScreen.SetActive(false);
         yield return StartCoroutine(_uiFadeEffects.DoFadeOut(fullScreenFade, Color.black));
+        fullScreenFade.gameObject.SetActive(true);
         GameManager.Instance.SendToMenu();
         SceneManager.LoadScene("MainMenu");
     }
