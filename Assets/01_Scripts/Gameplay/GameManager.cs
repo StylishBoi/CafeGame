@@ -70,11 +70,13 @@ public class GameManager : MonoBehaviour
     {
         _lastGameState = _currentGameState;
         SwitchState(GameState.Paused);
+        Time.timeScale = 0;
     }
 
     public void UnPause()
     {
         SwitchState(_lastGameState);
+        Time.timeScale = 1;
     }
 
     #endregion

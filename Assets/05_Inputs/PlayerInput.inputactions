@@ -1,4 +1,5 @@
 {
+    "version": 1,
     "name": "PlayerInput",
     "maps": [
         {
@@ -27,6 +28,15 @@
                     "name": "Submit",
                     "type": "Button",
                     "id": "e1ab9944-4666-49ba-9078-e12c6165349e",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "2d3044df-63d4-4eb5-a2a6-d6aced0c464b",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -108,6 +118,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Submit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8118f9cf-9c62-4080-8643-b1518062e29b",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "Press(behavior=2)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

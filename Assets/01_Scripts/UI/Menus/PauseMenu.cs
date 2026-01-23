@@ -3,41 +3,55 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class MenuScript : MonoBehaviour
+public class PauseMenu : MonoBehaviour
 {
-    private Canvas thisCanvas;
-    private UIFadeEffects _uiFadeEffects;
+    public static PauseMenu Instance { get; private set; }
+    
+    [SerializeField] private Canvas pauseMenu;
+    
+    //private UIFadeEffects _uiFadeEffects;
     [SerializeField] private Image fullScreenFade;
 
-    public void Start()
+    public void Awake()
     {
-        thisCanvas = gameObject.GetComponent<Canvas>();
-        _uiFadeEffects = gameObject.GetComponent<UIFadeEffects>();
+        //_uiFadeEffects = FindFirstObjectByType<UIFadeEffects>();
+        
+        if (Instance && Instance != this) Destroy(gameObject);
+        else Instance = this;
+        Debug.Log(Instance);
     }
     
     public void SwitchCanvas(Canvas canvas)
     {
-        thisCanvas.enabled = !thisCanvas.enabled;
+        pauseMenu.enabled = !pauseMenu.enabled;
         canvas.enabled = !canvas.enabled;
     }
 
+    public void PauseGame()
+    {
+        pauseMenu.enabled = true;
+        GameManager.Instance.Pause();
+    }
+    
     public void UnpauseGame()
     {
-        thisCanvas.enabled = !thisCanvas.enabled;
+        pauseMenu.enabled = false;
         GameManager.Instance.UnPause();
     }
 
     public void MainMenu()
     {
-        StartCoroutine(MainMenuFade());
-    }
-
-    private IEnumerator MainMenuFade()
-    {
-        GameManager.Instance.SwitchState(GameState.Cinematic);
-        yield return StartCoroutine(_uiFadeEffects.DoFadeOut(fullScreenFade, Color.black));
-        fullScreenFade.gameObject.SetActive(true);
-        GameManager.Instance.SendToMenu();
+        pauseMenu.enabled = false;
+        //StartCoroutine(MainMenuFade());
         SceneManager.LoadScene("MainMenu");
     }
+
+    // private IEnumerator MainMenuFade()
+    // {
+    //     GameManager.Instance.SwitchState(GameState.Cinematic);
+    //     yield return StartCoroutine(_uiFadeEffects.DoFadeOut(fullScreenFade, Color.black));
+    //     fullScreenFade.gameObject.SetActive(true);
+    //     GameManager.Instance.SendToMenu();
+    //     SceneManager.LoadScene("MainMenu");
+    // }
 }
