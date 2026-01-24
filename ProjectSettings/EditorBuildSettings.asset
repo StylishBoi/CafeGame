@@ -9,11 +9,14 @@ EditorBuildSettings:
     path: Assets/02_Scenes/DialogueTest.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
-    path: Assets/02_Scenes/Mini-Games/PouringCafe.unity
-    guid: 910dab571c7a12045b1548f0147e9a64
+    path: Assets/02_Scenes/MainMenu.unity
+    guid: 6a2cf3647e6f24144b88dbaa81c108eb
   - enabled: 1
     path: Assets/02_Scenes/CafePrototype.unity
     guid: 8aaae788b3a89274fafb91e4b21234b4
+  - enabled: 1
+    path: Assets/02_Scenes/Mini-Games/PouringCafe.unity
+    guid: 910dab571c7a12045b1548f0147e9a64
   - enabled: 1
     path: Assets/02_Scenes/Mini-Games/TeaStirring.unity
     guid: 4d34efa3e66c37940b218d66b8fe8e0d
@@ -23,9 +26,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/02_Scenes/Mini-Games/ShakeMilkshake.unity
     guid: 1a757427519920041b395a4308afd53a
-  - enabled: 1
-    path: Assets/02_Scenes/MainMenu.unity
-    guid: 6a2cf3647e6f24144b88dbaa81c108eb
   - enabled: 1
     path: Assets/02_Scenes/Mini-Games/Dishwasher.unity
     guid: d68156ecb167af24ab245fc97ee64fa8

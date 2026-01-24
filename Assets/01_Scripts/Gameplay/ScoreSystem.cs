@@ -40,4 +40,11 @@ public static class ScoreSystem
         TotalMoneyScore += LastScore;
         CustomersServed++;
     }
+
+    public static void LoadData()
+    {
+        SavedStats savedStats = SaveSystem.LoadStats();
+        TotalMoneyScore = savedStats.totalMoneyScore;
+        DayCount = savedStats.dayCount;
+    }
 }
