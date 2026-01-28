@@ -122,7 +122,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6604958756165384754}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
         m_MethodName: UnpauseGame
         m_Mode: 1
@@ -391,8 +391,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6604958756165384754}
-        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
+      - m_Target: {fileID: 2143971163915364591}
+        m_TargetAssemblyTypeName: PredayMenu, Assembly-CSharp
         m_MethodName: MainMenu
         m_Mode: 1
         m_Arguments:
@@ -416,7 +416,7 @@ GameObject:
   - component: {fileID: 3599935742946201404}
   - component: {fileID: 9126665257657027298}
   m_Layer: 5
-  m_Name: Options
+  m_Name: Save
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -524,13 +524,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: MenuScript, Assembly-CSharp
-        m_MethodName: SwitchCanvas
-        m_Mode: 2
+      - m_Target: {fileID: 2143971163915364591}
+        m_TargetAssemblyTypeName: PredayMenu, Assembly-CSharp
+        m_MethodName: SaveGame
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Canvas, UnityEngine
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -835,7 +835,7 @@ GameObject:
   - component: {fileID: 808290914110847152}
   - component: {fileID: 488827848449537472}
   m_Layer: 5
-  m_Name: Continue
+  m_Name: Start
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -943,9 +943,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6604958756165384754}
-        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
-        m_MethodName: UnpauseGame
+      - m_Target: {fileID: 2143971163915364591}
+        m_TargetAssemblyTypeName: PredayMenu, Assembly-CSharp
+        m_MethodName: StartDay
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1412,7 +1412,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6604958756165384754}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
         m_MethodName: UnpauseGame
         m_Mode: 1
@@ -1586,7 +1586,7 @@ GameObject:
   - component: {fileID: 8066650812865645609}
   - component: {fileID: 4848377897336847878}
   - component: {fileID: 8653171602368102102}
-  - component: {fileID: 6604958756165384754}
+  - component: {fileID: 2143971163915364591}
   m_Layer: 5
   m_Name: PreDayCanvas
   m_TagString: Untagged
@@ -1681,7 +1681,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &6604958756165384754
+--- !u!114 &2143971163915364591
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1690,11 +1690,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 7259493690978401901}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3bc796d51d900f245bf709261093887c, type: 3}
+  m_Script: {fileID: 11500000, guid: ac492770e2f19274a85d4484e2fb78f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseMenu: {fileID: 8066650812865645609}
-  fullScreenFade: {fileID: 5500201011142475539}
+  dayText: {fileID: 7088342612403540661}
+  saveButton: {fileID: 9126665257657027298}
 --- !u!1 &7695054084841873409
 GameObject:
   m_ObjectHideFlags: 0
@@ -1907,7 +1907,7 @@ GameObject:
   - component: {fileID: 6713718206495204666}
   - component: {fileID: 7088342612403540661}
   m_Layer: 5
-  m_Name: PauseText
+  m_Name: HeaderText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

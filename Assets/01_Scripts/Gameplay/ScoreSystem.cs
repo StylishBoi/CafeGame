@@ -2,7 +2,7 @@ public static class ScoreSystem
 {
     //Persists through the days
     public static int TotalMoneyScore = 0;
-    public static int DayCount = 0;
+    public static int DayCount = 1;
     
     //Resets everyday
     public static int CustomersServed = 0;
@@ -11,7 +11,6 @@ public static class ScoreSystem
 
     public static void StartDay()
     {
-        DayCount++;
         CustomersServed = 0;
         MoneyScore = 0;
         LastScore = 0;
@@ -39,6 +38,14 @@ public static class ScoreSystem
         
         TotalMoneyScore += LastScore;
         CustomersServed++;
+    }
+
+    public static void EndDay()
+    {
+        DayCount++;
+        CustomersServed = 0;
+        MoneyScore = 0;
+        LastScore = 0;
     }
 
     public static void LoadData()

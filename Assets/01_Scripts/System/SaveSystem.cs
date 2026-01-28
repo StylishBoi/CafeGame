@@ -35,4 +35,16 @@ public static class SaveSystem
             return null;
         }
     }
+
+    public static bool HasData()
+    {
+        string path = Application.persistentDataPath + "/SaveData.dat";
+        return File.Exists(path);
+    }
+
+    public static void DeleteData()
+    {
+        string path = Application.persistentDataPath + "/SaveData.dat";
+        File.Delete(path);
+    }
 }

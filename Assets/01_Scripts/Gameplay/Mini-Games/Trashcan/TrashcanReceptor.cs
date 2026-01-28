@@ -26,5 +26,9 @@ public class TrashcanReceptor : MonoBehaviour
             TrashcanMinigame.trashCount++;
             Destroy(collision.gameObject);
         }
+        if (collision.CompareTag("CollisionBorder"))
+        {
+            Debug.Log("COLLISION OCCURING");
+        }
     }
 }

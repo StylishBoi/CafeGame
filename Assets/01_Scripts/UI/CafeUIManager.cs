@@ -113,9 +113,9 @@ public class CafeUIManager : MonoBehaviour
         endResultScreen.SetActive(false);
         yield return StartCoroutine(_uiFadeEffects.DoFadeOut(fullScreenFade, Color.black));
         fullScreenFade.gameObject.SetActive(true);
-        SaveSystem.SaveGame();
         GameManager.Instance.SendToMenu();
-        SceneManager.LoadScene("MainMenu");
+        ScoreSystem.EndDay();
+        SceneManager.LoadScene("PredayScene");
     }
     
     
