@@ -30,6 +30,7 @@ public class FloorMop : MonoBehaviour
     private void OnDisable()
     {
         _currentOpacity = 1f;
+        spriteRenderer.color = new Color(_color.r, _color.g, _color.b, _currentOpacity);
         _sweepsCount = 0;
         _repeat = false;
     }
@@ -49,6 +50,7 @@ public class FloorMop : MonoBehaviour
         if (_sweepsCount >= _sweepsTotal)
         {
             MinigameManager.Instance.MiniGameEnd();
+            MaintenanceManager.RemoveMaintenanceEvent();
             minigameHeader.SetActive(false);
         }
     }

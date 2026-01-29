@@ -703,7 +703,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 960
   spawnableAreaCollider: {fileID: 223206184}
-  dishwasherSpawn: {fileID: 339159672}
   minMaintenanceTime: 15
   maxMaintenanceTime: 20
 --- !u!1 &127422704
@@ -1412,10 +1411,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   visualCue: {fileID: 1522541398}
-  maintenanceItem: 0
-  cafeUIManager: {fileID: 260220899}
   minigamePrefab: {fileID: 1397866726}
   deleteableMinigame: 0
+  dishwasher: 0
 --- !u!4 &220940155 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7410747764553044817, guid: b8a2008b87aef1e42ac8c8c94ef32c3c, type: 3}
@@ -2059,10 +2057,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   visualCue: {fileID: 380947791}
-  maintenanceItem: 0
-  cafeUIManager: {fileID: 260220899}
-  minigamePrefab: {fileID: 0}
+  minigamePrefab: {fileID: 897765310}
   deleteableMinigame: 0
+  dishwasher: 1
 --- !u!1 &372318319
 GameObject:
   m_ObjectHideFlags: 0
@@ -3020,10 +3017,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   visualCue: {fileID: 4312679562185349691}
-  maintenanceItem: 0
-  cafeUIManager: {fileID: 260220899}
   minigamePrefab: {fileID: 1360493000}
   deleteableMinigame: 0
+  dishwasher: 0
 --- !u!1 &616433009 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6401556659412427007, guid: 4d7bb1120fb327d43a45b5a4a793b8dd, type: 3}
@@ -4797,6 +4793,77 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.8, y: 0.5}
   m_EdgeRadius: 0
+--- !u!1001 &897765308
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 986051215}
+    m_Modifications:
+    - target: {fileID: 678434627359990978, guid: 4ee20fe7cf816f641a17513fb5726500, type: 3}
+      propertyPath: m_Name
+      value: _-DishwasherMinigame-_
+      objectReference: {fileID: 0}
+    - target: {fileID: 678434627359990978, guid: 4ee20fe7cf816f641a17513fb5726500, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2810216094034011687, guid: 4ee20fe7cf816f641a17513fb5726500, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2810216094034011687, guid: 4ee20fe7cf816f641a17513fb5726500, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2810216094034011687, guid: 4ee20fe7cf816f641a17513fb5726500, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2810216094034011687, guid: 4ee20fe7cf816f641a17513fb5726500, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2810216094034011687, guid: 4ee20fe7cf816f641a17513fb5726500, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2810216094034011687, guid: 4ee20fe7cf816f641a17513fb5726500, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2810216094034011687, guid: 4ee20fe7cf816f641a17513fb5726500, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2810216094034011687, guid: 4ee20fe7cf816f641a17513fb5726500, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2810216094034011687, guid: 4ee20fe7cf816f641a17513fb5726500, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2810216094034011687, guid: 4ee20fe7cf816f641a17513fb5726500, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4ee20fe7cf816f641a17513fb5726500, type: 3}
+--- !u!4 &897765309 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2810216094034011687, guid: 4ee20fe7cf816f641a17513fb5726500, type: 3}
+  m_PrefabInstance: {fileID: 897765308}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &897765310 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 678434627359990978, guid: 4ee20fe7cf816f641a17513fb5726500, type: 3}
+  m_PrefabInstance: {fileID: 897765308}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &900975114
 GameObject:
   m_ObjectHideFlags: 0
@@ -5031,6 +5098,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 897765309}
   - {fileID: 514573210}
   - {fileID: 1759869375}
   - {fileID: 2009806214}
@@ -9074,10 +9142,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   visualCue: {fileID: 1936677737}
-  maintenanceItem: 0
-  cafeUIManager: {fileID: 260220899}
   minigamePrefab: {fileID: 1759869376}
   deleteableMinigame: 0
+  dishwasher: 0
 --- !u!224 &1785908354 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3772484261335722755, guid: 527d7a73d5a090042995ea222ab5f4af, type: 3}

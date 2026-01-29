@@ -11,6 +11,13 @@ public class Drag : MonoBehaviour
     {
         _startPosition = transform.position;
     }
+
+    void OnDisable()
+    {
+        _dragging = false;
+        transform.position = _startPosition;
+    }
+    
     void Update()
     {
         if (_dragging)
@@ -35,7 +42,8 @@ public class Drag : MonoBehaviour
         
         if (collision.CompareTag("Dishwasher"))
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
+            _dragging = false;
         }
         
         else if (collision.gameObject.CompareTag("CollisionBorder"))

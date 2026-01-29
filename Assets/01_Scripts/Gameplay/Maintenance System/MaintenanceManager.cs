@@ -3,11 +3,18 @@ using System.Collections.Generic;
 
 public class MaintenanceManager : MonoBehaviour
 {
+    public enum WashingMachineState
+    {
+        Empty,
+        NeedsCleaning,
+        HasCleaning
+    }
+
     [Header("Maintenance Spawn")]
     [SerializeField] private List<GameObject> maintenanceEvents;
     [SerializeField] private LayerMask unSpawnableLayers;
     [SerializeField] private Collider2D spawnableAreaCollider;
-    [SerializeField] private GameObject dishwasherSpawn;
+    public static WashingMachineState dishwasherState;
     
     [Header("Maintenance Time")]
     [SerializeField] private int minMaintenanceTime = 15;
@@ -19,10 +26,17 @@ public class MaintenanceManager : MonoBehaviour
 
     void Update()
     {
-        if (ScoreSystem.CustomersServed % 5 == 0)
+        //Washing Machine system
+        if (ScoreSystem.CustomersServed % 3 == 0 && ScoreSystem.CustomersServed !=0 && dishwasherState == WashingMachineState.Empty)
         {
-            dishwasherSpawn.SetActive(true);
+            dishwasherState = WashingMachineState.NeedsCleaning;
         }
+
+        if (dishwasherState == WashingMachineState.HasCleaning && ScoreSystem.CustomersServed % 3 == 1)
+        {
+            dishwasherState = WashingMachineState.Empty;
+        }
+        
         if (_timerForNextMaintenanceEvent < _nextMaintenanceEvent)
         {
             _timerForNextMaintenanceEvent += Time.deltaTime;
@@ -44,7 +58,7 @@ public class MaintenanceManager : MonoBehaviour
             Vector2 spawnPosition = GetRandomSpawnPosition(spawnableAreaCollider);
             if (spawnPosition != Vector2.zero)
             {
-                var newMaintenanceEvent = Instantiate(maintenanceEvents[random], spawnPosition, Quaternion.identity, transform);
+                var newMaintenanceEvent = Instantiate(maintenanceEvents[0], spawnPosition, Quaternion.identity, transform);
                 CurrentMaintenanceEvents.Add(newMaintenanceEvent);
             }
         }
