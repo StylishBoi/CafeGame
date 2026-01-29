@@ -4,26 +4,42 @@ using UnityEngine.SceneManagement;
 public class CoffeeIncrease : MonoBehaviour
 {
     [Header("Minigames Awards")]
-    [SerializeField] Item goodMinigameItem;
-    [SerializeField] Item badMinigameItem;
+    [SerializeField] private Item goodMinigameItem;
+    [SerializeField] private Item badMinigameItem;
     
-    private bool pipeStopped;
-    private bool success;
+    [Header("Minigame")]
+    [SerializeField] private GameObject minigameHeader;
+    
+    private bool _pipeStopped;
+    private bool _success;
+    
+    private Vector3 _pipePosition;
+    private Vector3 _pipeScale;
 
+    void Start()
+    {
+        _pipePosition=transform.position;
+        _pipeScale=transform.localScale;
+    }
+
+    void OnDisable()
+    {
+        Reset();
+    }
     void FixedUpdate()
     {
-        if (pipeStopped != true)
+        if (_pipeStopped != true)
         {
             this.transform.localScale += new Vector3(0f, 0.4f, 0f)*Time.deltaTime;
             this.transform.localPosition += new Vector3(0f, 0.2f, 0f)*Time.deltaTime;
         }
         
-        if (MinigameInput.Instance.GetInteractPressed() && pipeStopped == false)
+        if (MinigameInput.Instance.GetInteractPressed() && _pipeStopped == false)
         {
             Debug.Log(MinigameInput.Instance.GetInteractPressed());
-            pipeStopped = true;
+            _pipeStopped = true;
             
-            if (success)
+            if (_success)
             {
                 InventoryManager.Instance.AddItem(goodMinigameItem);
                 MinigameManager.Instance.MiniGameEnd();
@@ -33,6 +49,7 @@ public class CoffeeIncrease : MonoBehaviour
                 InventoryManager.Instance.AddItem(badMinigameItem);
                 MinigameManager.Instance.MiniGameEnd();
             }
+            minigameHeader.SetActive(false);
         }
     }
     
@@ -43,7 +60,7 @@ public class CoffeeIncrease : MonoBehaviour
         if (collision.CompareTag("EndZone"))
         {
             Debug.Log("Not a success");
-            pipeStopped = true;
+            _pipeStopped = true;
             InventoryManager.Instance.AddItem(badMinigameItem);
             MinigameManager.Instance.MiniGameEnd();
         }
@@ -51,8 +68,15 @@ public class CoffeeIncrease : MonoBehaviour
         else if (collision.CompareTag("SuccessZone"))
         {
             Debug.Log("Currently successful");
-            success = true;
+            _success = true;
         }
+    }
+
+    private void Reset()
+    {
+        _pipeStopped = false;
+        transform.localScale = _pipeScale;
+        transform.position = _pipePosition;
     }
     
 }

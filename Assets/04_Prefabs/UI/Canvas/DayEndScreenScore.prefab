@@ -55,7 +55,7 @@ MonoBehaviour:
   customerText: {fileID: 8442388919507151513}
   moneyText: {fileID: 8565075371306107541}
   streakText: {fileID: 147269764192705318}
-  totalScoreText: {fileID: 4043432355569044038}
+  bankText: {fileID: 4043432355569044038}
 --- !u!1 &880180209936628160
 GameObject:
   m_ObjectHideFlags: 0

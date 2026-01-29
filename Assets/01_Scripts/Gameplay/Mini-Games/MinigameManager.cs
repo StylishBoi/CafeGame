@@ -17,8 +17,8 @@ public class MinigameManager : MonoBehaviour
     
     public MinigameState State => _currentMinigameState;
     
-    private GameObject _inputManager;
     private PlayerMovement _playerMovement;
+    private GameObject _deletedObject;
 
     private void Awake()
     {
@@ -28,12 +28,6 @@ public class MinigameManager : MonoBehaviour
     
     public void MiniGameEnd()
     {
-        var lastSceneIndex = SceneManager.sceneCount - 1;
-        
-        var LastLoadedScene = SceneManager.GetSceneAt(lastSceneIndex);
-        
-        SceneManager.UnloadSceneAsync(LastLoadedScene);
-        
         CafeUIManager.Instance.NewItem();
         ExitMinigame();
     }
@@ -42,9 +36,18 @@ public class MinigameManager : MonoBehaviour
     {
         _currentMinigameState = MinigameState.InGame;
     }
+    public void EnterMinigame(GameObject minigame)
+    {
+        _deletedObject = minigame;
+        _currentMinigameState = MinigameState.InGame;
+    }
 
     private void ExitMinigame()
     {
+        if (_deletedObject != null)
+        {
+            Destroy(_deletedObject);
+        }
         _currentMinigameState = MinigameState.OutGame;
     }
 }

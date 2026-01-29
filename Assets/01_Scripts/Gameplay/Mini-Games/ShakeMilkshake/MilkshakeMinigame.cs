@@ -1,6 +1,10 @@
+using System;
 using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
+using UnityEngine.PlayerLoop;
+using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 public class MilkshakeMinigame : MonoBehaviour
 {
@@ -8,27 +12,34 @@ public class MilkshakeMinigame : MonoBehaviour
     [SerializeField] Item goodMinigameItem;
     [SerializeField] Item badMinigameItem;
     
+    [Header("Minigame")]
+    [SerializeField] GameObject minigameHeader;
+    
     //Creates the numerified chain
     private int[] arrowOrderInts = new int[4];
-    private int random;
     
+    [Header("Buttons")]
     //Visualies the buttons
-    public List<SpriteRenderer> _arrowSpots = new List<SpriteRenderer>();
-    public List<ArrowButton> _listOfArrowButtons = new List<ArrowButton>();
+    public List<SpriteRenderer> arrowSpots = new List<SpriteRenderer>();
+    public List<ArrowButton> listOfArrowButtons = new List<ArrowButton>();
     
+    [Header("Animation")]
     //Animate milkshake
-    public GameObject milkshake;
-    bool repeat = false;
+    [SerializeField] private GameObject milkshake;
+    private bool _repeat;
+    //Milkshake move positions
+    public Transform[] shakePositions = new Transform[2];
 
     //Verify the presses
-    private int currentPress;
-    private int currentPosition;
+    private int _currentPress;
+    private int _currentPosition;
     
     //Cooldown to avoid constant pressing
-    float buttonCoolDown;
+    private float _buttonCoolDown;
 
     //Takes the arrows sprites from the inspector
     public Sprite[] spritesOfArrows = new Sprite[4];
+    
     
     void Awake()
     {
@@ -37,20 +48,11 @@ public class MilkshakeMinigame : MonoBehaviour
         
         //Creates the list of arrows icons
         SpriteRenderer[] arrowArray = gameObject.GetComponentsInDirectChildren<SpriteRenderer>();
-        _arrowSpots = new List<SpriteRenderer>(arrowArray);
+        arrowSpots = new List<SpriteRenderer>(arrowArray);
         
         //Create the list of arrow backdrops
         ArrowButton[] gameArray = GetComponentsInChildren<ArrowButton>();
-        _listOfArrowButtons = new List<ArrowButton>(gameArray);
-        
-        //Randomly choose which arrow will be present in the list
-        // 0 - Up | 1 - Right | 2 - Down | 3 - Left
-        for (int i = 0; i < 4; i++)
-        {
-            random = Random.Range(0, 4);
-            arrowOrderInts[i]=random;
-            Debug.Log(arrowOrderInts[i]);
-        }
+        listOfArrowButtons = new List<ArrowButton>(gameArray);
         MakeArrowsAppear();
     }
     
@@ -66,60 +68,66 @@ public class MilkshakeMinigame : MonoBehaviour
         }
         return components;
     }
+
+    private void OnDisable()
+    {
+        
+        _currentPosition = 0;
+        _buttonCoolDown = 0;
+        _currentPress = 4;
+        MakeArrowsAppear();
+    }
+    
     void Update()
     {
-        buttonCoolDown += Time.deltaTime;
+        _buttonCoolDown += Time.deltaTime;
         
         if (MinigameInput.Instance.GetMoveUPressed())
         {
-            Debug.Log("Up was pressed");
-            currentPress = 0;
+            _currentPress = 0;
         }
         else if (MinigameInput.Instance.GetMoveRPressed())
         {
-            Debug.Log("Right was pressed");
-            currentPress = 1;
+            _currentPress = 1;
         }
         else if (MinigameInput.Instance.GetMoveDPressed())
         {
-            Debug.Log("Down was pressed");
-            currentPress = 2;
+            _currentPress = 2;
         }
         else if (MinigameInput.Instance.GetMoveLPressed())
         {
-            Debug.Log("Left was pressed");
-            currentPress = 3;
+            _currentPress = 3;
         }
 
             
-        if (Input.anyKey && buttonCoolDown > 0.5f)
+        if (Input.anyKey && _buttonCoolDown > 0.5f)
         {
-            if (currentPress == arrowOrderInts[currentPosition])
+            if (_currentPress == arrowOrderInts[_currentPosition])
             {
-                _listOfArrowButtons[currentPosition].GoodClicked();
-                currentPosition++;
-                buttonCoolDown = 0;
+                listOfArrowButtons[_currentPosition].GoodClicked();
+                _currentPosition++;
+                _buttonCoolDown = 0;
                 
-                if (repeat)
+                if (_repeat)
                 {
-                    milkshake.transform.localPosition += new Vector3(0, 50f, 0f)*Time.deltaTime;
-                    repeat = false;
+                    milkshake.transform.position = shakePositions[0].position;
+                    _repeat = false;
                 }
-                else if (!repeat)
+                else if (!_repeat)
                 {
-                    milkshake.transform.localPosition += new Vector3(0, -50f, 0f)*Time.deltaTime;
-                    repeat = true;
+                    milkshake.transform.position = shakePositions[1].position;
+                    _repeat = true;
                 }
             }
             else
             {
-                _listOfArrowButtons[currentPosition].BadClicked();
-                buttonCoolDown = 0;
+                listOfArrowButtons[_currentPosition].BadClicked();
+                _buttonCoolDown = 0;
                 InventoryManager.Instance.AddItem(badMinigameItem);
                 StartCoroutine(MinigameLeave());
             }
 
-            if (currentPosition > arrowOrderInts.Length - 1)
+            if (_currentPosition > arrowOrderInts.Length - 1)
             {
                 InventoryManager.Instance.AddItem(goodMinigameItem);
                 StartCoroutine(MinigameLeave());
@@ -129,10 +137,19 @@ public class MilkshakeMinigame : MonoBehaviour
 
     void MakeArrowsAppear()
     {
-        //Changes the icon in the arrow spot with the corresponding arrow
-        foreach (SpriteRenderer arrow in _arrowSpots)
+        //Randomly choose which arrow will be present in the list
+        // 0 - Up | 1 - Right | 2 - Down | 3 - Left
+        for (int i = 0; i < 4; i++)
         {
-            arrow.sprite = spritesOfArrows[arrowOrderInts[_arrowSpots.IndexOf(arrow)]];
+            int random = Random.Range(0, 4);
+            arrowOrderInts[i]=random;
+            Debug.Log(arrowOrderInts[i]);
+        }
+        
+        //Changes the icon in the arrow spot with the corresponding arrow
+        foreach (SpriteRenderer arrow in arrowSpots)
+        {
+            arrow.sprite = spritesOfArrows[arrowOrderInts[arrowSpots.IndexOf(arrow)]];
         }
     }
 
@@ -141,5 +158,6 @@ public class MilkshakeMinigame : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         
         MinigameManager.Instance.MiniGameEnd();
+        minigameHeader.SetActive(false);
     }
 }

@@ -5,6 +5,8 @@ using System.Collections;
 
 public class TrashcanMinigame : MonoBehaviour
 {
+    [SerializeField] GameObject minigameHeader;
+    
     [SerializeField]
     private List<Image> trashcanIcons;
     [SerializeField]
@@ -12,12 +14,17 @@ public class TrashcanMinigame : MonoBehaviour
     [SerializeField]
     private Collider2D trashZone;
     
-    public static int trashCount = 0;
+    public static int TrashCount = 0;
     
     void Start()
     {
         Instantiate(trashBag, GetRandomPointInCollider(trashZone), Quaternion.identity, transform);
-        trashCount = 0;
+        TrashCount = 0;
+    }
+
+    void OnDisable()
+    {
+        Reset();
     }
 
     void Update()
@@ -27,7 +34,7 @@ public class TrashcanMinigame : MonoBehaviour
             Instantiate(trashBag, GetRandomPointInCollider(trashZone), Quaternion.identity, transform);
         }
 
-        if (trashCount >= 3)
+        if (TrashCount >= 3)
         {
             StartCoroutine(MinigameLeave());
         }
@@ -50,6 +57,12 @@ public class TrashcanMinigame : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
         
-        MinigameManager.Instance.MiniGameEnd();
+        //MinigameManager.Instance.MiniGameEnd();
+        minigameHeader.SetActive(false);
+    }
+
+    void Reset()
+    {
+        TrashCount = 0;
     }
 }

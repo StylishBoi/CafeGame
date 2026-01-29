@@ -1,10 +1,11 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class TeaBubble : MonoBehaviour
 {
-    public GameObject _bubbleTexture;
-    public TeaBubbleManager _teaBubbleManager;
-    public bool _bubbleActive;
+    private GameObject _bubbleTexture;
+    private TeaBubbleManager _teaBubbleManager;
+    private bool _bubbleActive;
 
     void Awake()
     {
@@ -21,7 +22,7 @@ public class TeaBubble : MonoBehaviour
         }
     }
     
-    public void Deactivate()
+    private void Deactivate()
     {
         //Deactivate the target
         _bubbleActive = false;

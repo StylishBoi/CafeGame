@@ -10,18 +10,10 @@ public class MinigameDetector : MonoBehaviour
     
     [Header("Managers")]
     [SerializeField] private CafeUIManager cafeUIManager;
-
-    public enum MinigameScenes
-    {
-        PouringCafe,
-        Dishwasher,
-        FloorCleaning,
-        ShakeMilkshake,
-        TeaStirring,
-        Trashcan
-    }
     
-    public MinigameScenes minigameScene;
+    [Header("Minigame")]
+    [SerializeField] private GameObject minigamePrefab;
+    [SerializeField] private bool deleteableMinigame;
     
     private void Awake()
     {
@@ -36,12 +28,14 @@ public class MinigameDetector : MonoBehaviour
             visualCue.SetActive(true);
             if (InputManager.GetInstance().GetInteractPressed() && (GameManager.Instance.State==GameState.CafePlay || GameManager.Instance.State==GameState.BasicPlay))
             {
-                SceneManager.LoadScene(minigameScene.ToString(), LoadSceneMode.Additive);
-                MinigameManager.Instance.EnterMinigame();
-                if (maintenanceItem)
+                minigamePrefab.SetActive(true);
+                if (deleteableMinigame)
                 {
-                    Destroy(gameObject);
-                    MaintenanceManager.RemoveMaintenanceEvent();
+                    MinigameManager.Instance.EnterMinigame(gameObject);
+                }
+                else
+                {
+                    MinigameManager.Instance.EnterMinigame();
                 }
             }
         }

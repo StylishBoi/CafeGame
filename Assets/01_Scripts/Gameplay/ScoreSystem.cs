@@ -1,5 +1,10 @@
 public static class ScoreSystem
 {
+    //All time stats
+    public static int AllMoneyEver = 0;
+    public static int AllCustomersEver = 0;
+    public static int HighestStreakEver = 0;
+    
     //Persists through the days
     public static int TotalMoneyScore = 0;
     public static int DayCount = 1;
@@ -42,7 +47,16 @@ public static class ScoreSystem
 
     public static void EndDay()
     {
+        //Add up previous stats
+        if (HighestStreakEver < StreakManager.HighestStreak)
+        {
+            HighestStreakEver=StreakManager.HighestStreak;
+        }
+        AllMoneyEver+=MoneyScore;
+        AllCustomersEver+=CustomersServed;
         DayCount++;
+        
+        //Resets stats
         CustomersServed = 0;
         MoneyScore = 0;
         LastScore = 0;

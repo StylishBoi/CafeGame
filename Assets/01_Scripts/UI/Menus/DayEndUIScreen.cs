@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.SocialPlatforms.Impl;
 
 public class DayEndUIScreen : MonoBehaviour
@@ -8,7 +9,7 @@ public class DayEndUIScreen : MonoBehaviour
     [SerializeField] private TextMeshProUGUI customerText;
     [SerializeField] private TextMeshProUGUI moneyText;
     [SerializeField] private TextMeshProUGUI streakText;
-    [SerializeField] private TextMeshProUGUI totalScoreText;
+    [SerializeField] private TextMeshProUGUI bankText;
 
     private void OnEnable()
     {
@@ -16,6 +17,6 @@ public class DayEndUIScreen : MonoBehaviour
         customerText.text = ScoreSystem.CustomersServed.ToString();
         moneyText.text=ScoreSystem.MoneyScore.ToString();
         streakText.text=StreakManager.HighestStreak.ToString();
-        totalScoreText.text = ScoreSystem.TotalMoneyScore.ToString("0000000");
+        bankText.text = ScoreSystem.TotalMoneyScore.ToString("0000000");
     }
 }

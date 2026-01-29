@@ -8,10 +8,13 @@ public class PredayMenu : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI dayText;
     [SerializeField] private Button saveButton;
+    [SerializeField] private GameObject statsCanvas;
+    [SerializeField] private TextMeshProUGUI bankText;
 
     void OnEnable()
     {
         dayText.text = "Day " + ScoreSystem.DayCount;
+        bankText.text = ScoreSystem.TotalMoneyScore.ToString("0000000");
         if (ScoreSystem.DayCount == 1)
         {
             saveButton.interactable = false;
@@ -25,6 +28,11 @@ public class PredayMenu : MonoBehaviour
         SceneManager.LoadScene("CafePrototype");
     }
 
+    public void StatsMenu()
+    {
+        gameObject.SetActive(false);
+        statsCanvas.SetActive(true);
+    }
     public void SaveGame()
     {
         SaveSystem.SaveGame();

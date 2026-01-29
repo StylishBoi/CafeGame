@@ -8,6 +8,11 @@ public class ArrowButton : MonoBehaviour
     {
         backdrop=GetComponent<SpriteRenderer>();
     }
+    
+    private void OnDisable()
+    {
+        backdrop.color = new Color(1f, 1f, 1f, 1f);
+    }
 
     public void GoodClicked()
     {

@@ -1,55 +1,69 @@
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class FloorMop : MonoBehaviour
 {
     //Sweep mechanics
-    bool repeat = false;
-    int sweepsTotal = 10;
-    int sweepsCount;
+    private bool _repeat;
+    private readonly int _sweepsTotal = 10;
+    private int _sweepsCount;
 
     //Sprite animation
-    [SerializeField] SpriteRenderer spriteRenderer_;
+    [Header("Sprite Animation")]
+    [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private GameObject leftArrow;
     [SerializeField] private GameObject rightArrow;
-    private float currentOpacity = 1f;
-    Color color;
+    
+    [Header("Minigame")]
+    [SerializeField] private GameObject minigameHeader;
+    
+    //Coloring
+    private float _currentOpacity = 1f;
+    private Color _color;
 
     private void Start()
     {
         leftArrow.SetActive(false);
     }
 
+    private void OnDisable()
+    {
+        _currentOpacity = 1f;
+        _sweepsCount = 0;
+        _repeat = false;
+    }
     void FixedUpdate()
     {
-        if (MinigameInput.Instance.GetMoveLPressed() && repeat)
+        if (MinigameInput.Instance.GetMoveLPressed() && _repeat)
         {
-            this.transform.localPosition += new Vector3(-80f, 0f, 0f)*Time.deltaTime;
+            transform.localPosition += new Vector3(-80f, 0f, 0f)*Time.deltaTime;
             SweepEvent();
         }
-        else if (MinigameInput.Instance.GetMoveRPressed() && !repeat)
+        else if (MinigameInput.Instance.GetMoveRPressed() && !_repeat)
         {
-            this.transform.localPosition += new Vector3(80f, 0f, 0f)*Time.deltaTime;
+            transform.localPosition += new Vector3(80f, 0f, 0f)*Time.deltaTime;
             SweepEvent();
         }
 
-        if (sweepsCount >= sweepsTotal)
+        if (_sweepsCount >= _sweepsTotal)
         {
             MinigameManager.Instance.MiniGameEnd();
+            minigameHeader.SetActive(false);
         }
     }
 
     void SweepEvent()
     {
         //Prepare for next sweep
-        repeat=!repeat;
-        sweepsCount++;
-        leftArrow.SetActive(repeat);
-        rightArrow.SetActive(!repeat);
+        _repeat=!_repeat;
+        _sweepsCount++;
+        leftArrow.SetActive(_repeat);
+        rightArrow.SetActive(!_repeat);
         
         //Modify the opacity
-        color=spriteRenderer_.color;
-        currentOpacity -= (1f/sweepsTotal);
-        spriteRenderer_.color = new Color(color.r, color.g, color.b, currentOpacity);
+        _color=spriteRenderer.color;
+        _currentOpacity -= (1f/_sweepsTotal);
+        spriteRenderer.color = new Color(_color.r, _color.g, _color.b, _currentOpacity);
     }
 }

@@ -23,7 +23,7 @@ public class TrashcanReceptor : MonoBehaviour
         if (collision.CompareTag("Trashbag"))
         {
             Debug.Log("Trash bag entered");
-            TrashcanMinigame.trashCount++;
+            TrashcanMinigame.TrashCount++;
             Destroy(collision.gameObject);
         }
         if (collision.CompareTag("CollisionBorder"))

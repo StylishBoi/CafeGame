@@ -3,30 +3,30 @@ using UnityEngine;
 
 public class Drag : MonoBehaviour
 {
-    private bool dragging = false;
-    private Vector3 offset;
-    private Vector3 startPosition;
+    private bool _dragging = false;
+    private Vector3 _offset;
+    private Vector3 _startPosition;
 
     void Start()
     {
-        startPosition = transform.position;
+        _startPosition = transform.position;
     }
     void Update()
     {
-        if (dragging)
+        if (_dragging)
         {
-            transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition) + offset;
+            transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition) + _offset;
         }
     }
     private void OnMouseDown()
     {
-        offset = transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        dragging = true;
+        _offset = transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        _dragging = true;
     }
 
     private void OnMouseUp()
     {
-        dragging = false;
+        _dragging = false;
     }
     
     private void OnTriggerEnter2D(Collider2D collision)
@@ -40,8 +40,8 @@ public class Drag : MonoBehaviour
         
         else if (collision.gameObject.CompareTag("CollisionBorder"))
         {
-            dragging = false;
-            transform.position = startPosition;
+            _dragging = false;
+            transform.position = _startPosition;
         }
     }
 }

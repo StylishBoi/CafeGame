@@ -7,16 +7,21 @@ public class MiniGameTimer : MonoBehaviour
     [Header("Minigames Award")]
     [SerializeField] Item badMinigameItem;
     
+    [Header("Minigame")]
+    [SerializeField] GameObject minigameHeader;
+    
+    [Header("Timer Info")]
     [SerializeField] private float maxTime = 10f;
     [SerializeField] private Image timerBar;
+    [SerializeField] TextMeshProUGUI countdownText;
     private float timeLeft;
 
-    [SerializeField] TextMeshProUGUI countdownText;
 
-    void Start()
+    void OnEnable()
     {
         timeLeft = maxTime;
     }
+    
     void FixedUpdate()
     {
         if (timeLeft > 0)
@@ -33,6 +38,7 @@ public class MiniGameTimer : MonoBehaviour
             countdownText.text = timeLeft.ToString("0");
             InventoryManager.Instance.AddItem(badMinigameItem);
             MinigameManager.Instance.MiniGameEnd();
+            minigameHeader.SetActive(false);
         }
     }
 }

@@ -13,6 +13,7 @@ public class Trashcan : MonoBehaviour
     private SpriteRenderer _spriteRenderer;
     public static int FillageRate;
     private bool _playerInRange;
+    public GameObject minigamePrefab;
     
     private void Awake()
     {
@@ -36,7 +37,8 @@ public class Trashcan : MonoBehaviour
                 }
                 else if (FillageRate == 3)
                 {
-                    SceneManager.LoadScene("Trashcan", LoadSceneMode.Additive);
+                    //SceneManager.LoadScene("Trashcan", LoadSceneMode.Additive);
+                    minigamePrefab.SetActive(true);
                     FillageRate = 0;
                 }
                 else

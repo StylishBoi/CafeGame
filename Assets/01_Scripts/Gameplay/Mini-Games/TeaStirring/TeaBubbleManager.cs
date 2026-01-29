@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
@@ -7,11 +8,14 @@ public class TeaBubbleManager : MonoBehaviour
     [Header("Minigames Award")]
     [SerializeField] Item goodMinigameItem;
     
+    [Header("Minigame")]
+    [SerializeField] GameObject minigameHeader;
+    
     private List<TeaBubble> _listofbubbles = new List<TeaBubble>();
     private int _totalBubbles;
     private int _currentBubble;
 
-    private int _totalRotations=10;
+    private readonly int _totalRotations=10;
     private int _currentRotation;
     
     void Start()
@@ -21,6 +25,11 @@ public class TeaBubbleManager : MonoBehaviour
         TeaBubble[] targetsArray = GetComponentsInChildren<TeaBubble>();
         _listofbubbles = new List<TeaBubble>(targetsArray);
         MoveToNextBubble();
+    }
+
+    private void OnDisable()
+    {
+        _currentRotation = 0;
     }
 
     public void MoveToNextBubble()
@@ -43,6 +52,7 @@ public class TeaBubbleManager : MonoBehaviour
         {
             MinigameManager.Instance.MiniGameEnd();
             InventoryManager.Instance.AddItem(goodMinigameItem);
+            minigameHeader.SetActive(false);
         }
     }
 }
