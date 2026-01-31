@@ -63,6 +63,7 @@ public class CoffeeIncrease : MonoBehaviour
             _pipeStopped = true;
             InventoryManager.Instance.AddItem(badMinigameItem);
             MinigameManager.Instance.MiniGameEnd();
+            minigameHeader.SetActive(false);
         }
         
         else if (collision.CompareTag("SuccessZone"))

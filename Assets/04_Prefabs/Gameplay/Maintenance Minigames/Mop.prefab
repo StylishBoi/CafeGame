@@ -260,9 +260,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   visualCue: {fileID: 8529369244310481388}
-  maintenanceItem: 1
-  cafeUIManager: {fileID: 0}
-  minigameScene: 2
+  minigamePrefab: {fileID: 0}
+  deleteableMinigame: 0
 --- !u!1 &8529369244310481388
 GameObject:
   m_ObjectHideFlags: 0
@@ -339,7 +338,7 @@ SpriteRenderer:
   m_SortingLayerID: -1068214393
   m_SortingLayer: 7
   m_SortingOrder: 1
-  m_Sprite: {fileID: 357006442158401228, guid: 479d2b9ed928a87409b6468385da6f1e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e5d33fd93f4320f4297cb9b66159e686, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

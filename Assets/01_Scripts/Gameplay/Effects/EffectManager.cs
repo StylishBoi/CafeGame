@@ -27,18 +27,6 @@ public class EffectManager : MonoBehaviour
     [SerializeField] private Color badStatus;
     [SerializeField] private Image backgroundImage;
 
-    [Header("Dirty Effect")] [SerializeField]
-    private GameObject dirtyIcon;
-
-    [Header("Streak Effect")] [SerializeField]
-    private GameObject streakIcon;
-
-    [Header("Negative Streak Effect")] [SerializeField]
-    private GameObject badStreakIcon;
-
-    [Header("Trashcan Effect")] [SerializeField]
-    private GameObject trashcanIcon;
-
     [Header("Effect Display")] [SerializeField]
     private RectTransform effectPanel;
 

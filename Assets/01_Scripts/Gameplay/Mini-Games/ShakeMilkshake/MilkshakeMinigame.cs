@@ -33,9 +33,6 @@ public class MilkshakeMinigame : MonoBehaviour
     //Verify the presses
     private int _currentPress;
     private int _currentPosition;
-    
-    //Cooldown to avoid constant pressing
-    private float _buttonCoolDown;
 
     //Takes the arrows sprites from the inspector
     public Sprite[] spritesOfArrows = new Sprite[4];
@@ -73,68 +70,66 @@ public class MilkshakeMinigame : MonoBehaviour
     {
         
         _currentPosition = 0;
-        _buttonCoolDown = 0;
         _currentPress = 4;
         MakeArrowsAppear();
     }
     
     void Update()
     {
-        _buttonCoolDown += Time.deltaTime;
-        
         if (MinigameInput.Instance.GetMoveUPressed())
         {
             _currentPress = 0;
+            Verification();
         }
         else if (MinigameInput.Instance.GetMoveRPressed())
         {
             _currentPress = 1;
+            Verification();
         }
         else if (MinigameInput.Instance.GetMoveDPressed())
         {
             _currentPress = 2;
+            Verification();
         }
         else if (MinigameInput.Instance.GetMoveLPressed())
         {
             _currentPress = 3;
-        }
-
-            
-        if (Input.anyKey && _buttonCoolDown > 0.5f)
-        {
-            if (_currentPress == arrowOrderInts[_currentPosition])
-            {
-                listOfArrowButtons[_currentPosition].GoodClicked();
-                _currentPosition++;
-                _buttonCoolDown = 0;
-                
-                if (_repeat)
-                {
-                    milkshake.transform.position = shakePositions[0].position;
-                    _repeat = false;
-                }
-                else if (!_repeat)
-                {
-                    milkshake.transform.position = shakePositions[1].position;
-                    _repeat = true;
-                }
-            }
-            else
-            {
-                listOfArrowButtons[_currentPosition].BadClicked();
-                _buttonCoolDown = 0;
-                InventoryManager.Instance.AddItem(badMinigameItem);
-                StartCoroutine(MinigameLeave());
-            }
-
-            if (_currentPosition > arrowOrderInts.Length - 1)
-            {
-                InventoryManager.Instance.AddItem(goodMinigameItem);
-                StartCoroutine(MinigameLeave());
-            }
+            Verification();
         }
     }
 
+    void Verification()
+    {
+        if (_currentPress == arrowOrderInts[_currentPosition])
+        {
+            listOfArrowButtons[_currentPosition].GoodClicked();
+            _currentPosition++;
+                
+            if (_repeat)
+            {
+                milkshake.transform.position = shakePositions[0].position;
+                _repeat = false;
+            }
+            else if (!_repeat)
+            {
+                milkshake.transform.position = shakePositions[1].position;
+                _repeat = true;
+            }
+        }
+        else
+        {
+            listOfArrowButtons[_currentPosition].BadClicked();
+            InventoryManager.Instance.AddItem(badMinigameItem);
+            StartCoroutine(MinigameLeave());
+        }
+
+        if (_currentPosition > arrowOrderInts.Length - 1)
+        {
+            InventoryManager.Instance.AddItem(goodMinigameItem);
+            StartCoroutine(MinigameLeave());
+        }
+    }
+    
     void MakeArrowsAppear()
     {
         //Randomly choose which arrow will be present in the list

@@ -2,108 +2,102 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 public class InputManager : MonoBehaviour
 {
     public static Vector2 Movement;
 
-    private PlayerInput _playerInput;
+    public PlayerInput playerInput;
     private InputAction _moveAction;
 
     //Buttons pressed
-    private bool interactPressed = false;
-    private bool submitPressed = false;
+    private bool _interactPressed;
+    private bool _submitPressed;
 
-    private static InputManager instance;
-
-    float buttonCoolDown;
+    public static InputManager Instance;
 
     private void Awake()
     {
-        _playerInput = GetComponent<PlayerInput>();
+        playerInput = GetComponent<PlayerInput>();
 
-        _moveAction = _playerInput.actions["Move"];
+        _moveAction = playerInput.actions["Move"];
 
-        if (instance != null)
+        if (Instance != null)
         {
             Debug.LogError("Found more than one Input Manager in the scene.");
         }
 
-        instance = this;
+        Instance = this;
     }
 
     public static InputManager GetInstance()
     {
-        return instance;
+        return Instance;
     }
 
     private void Update()
     {
         Movement = _moveAction.ReadValue<Vector2>();
-
-        if (buttonCoolDown < 0.5f)
-        {
-            buttonCoolDown += Time.deltaTime;
-        }
-
-        if (SceneManager.sceneCount != 1)
-        {
-            _playerInput.enabled = false;
-        }
-        else
-        {
-            _playerInput.enabled = true;
-        }
     }
 
     public void InteractButtonPressed(InputAction.CallbackContext context)
     {
-        if (context.performed && buttonCoolDown > 0.5f)
+        if (context.started)
         {
-            interactPressed = true;
+            _interactPressed = true;
         }
         else if (context.canceled)
         {
-            interactPressed = false;
+            _interactPressed = false;
         }
     }
 
     public void SubmitPressed(InputAction.CallbackContext context)
     {
-        if (context.performed && buttonCoolDown > 0.5f)
+        if (context.started)
         {
-            submitPressed = true;
+            _submitPressed = true;
         }
         else if (context.canceled)
         {
-            submitPressed = false;
+            _submitPressed = false;
         }
     }
 
     public void PausePressed(InputAction.CallbackContext context)
     {
-        if (context.started)
+        if (context.started && (GameManager.Instance.State == GameState.BasicPlay ||
+            GameManager.Instance.State == GameState.CafePlay))
         {
             PauseMenu.Instance.PauseGame();
         }
     }
 
+    public void UnpausePressed(InputAction.CallbackContext context)
+    {
+        if (context.started && GameManager.Instance.State == GameState.Paused)
+        {
+            PauseMenu.Instance.UnpauseGame();
+        }
+    }
+
     public bool GetInteractPressed()
     {
-        bool result = interactPressed;
-        interactPressed = false;
+        bool result = _interactPressed;
+        _interactPressed = false;
         return result;
     }
 
     public bool GetSubmitPressed()
     {
-        bool result = submitPressed;
-        submitPressed = false;
+        bool result = _submitPressed;
+        _submitPressed = false;
         return result;
     }
 
     public void RegisterSubmitPressed()
     {
-        submitPressed = false;
+        _submitPressed = false;
     }
 }

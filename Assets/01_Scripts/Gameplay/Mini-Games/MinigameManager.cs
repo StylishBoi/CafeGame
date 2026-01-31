@@ -34,16 +34,19 @@ public class MinigameManager : MonoBehaviour
 
     public void EnterMinigame()
     {
+        InputManager.Instance.playerInput.SwitchCurrentActionMap("Minigame");
         _currentMinigameState = MinigameState.InGame;
     }
     public void EnterMinigame(GameObject minigame)
     {
+        InputManager.Instance.playerInput.SwitchCurrentActionMap("Minigame");
         _deletedObject = minigame;
         _currentMinigameState = MinigameState.InGame;
     }
 
     private void ExitMinigame()
     {
+        InputManager.Instance.playerInput.SwitchCurrentActionMap("Movement");
         if (_deletedObject != null)
         {
             Destroy(_deletedObject);

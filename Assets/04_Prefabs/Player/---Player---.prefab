@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 905177910322706169}
   - component: {fileID: 5409272062382846597}
   - component: {fileID: 2786251300252262331}
+  - component: {fileID: 3187841273456131560}
   - component: {fileID: 7014867812484449826}
   m_Layer: 11
   m_Name: ---Player---
@@ -213,6 +214,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90704d6d5a294dc4ba6722adeee244c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3187841273456131560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6872098221289854377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3bfa20075d12ec4c9d0f5c832936927, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &7014867812484449826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -288,14 +301,50 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2786251300252262331}
+        m_TargetAssemblyTypeName: InputManager, Assembly-CSharp
+        m_MethodName: UnpausePressed
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 2d3044df-63d4-4eb5-a2a6-d6aced0c464b
     m_ActionName: 'Movement/Pause[/Keyboard/escape]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3187841273456131560}
+        m_TargetAssemblyTypeName: MinigameInput, Assembly-CSharp
+        m_MethodName: Interact
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: e0ff425b-ce4b-4cb4-89ba-bedb640e5307
     m_ActionName: 'Minigame/Interact[/Keyboard/space]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3187841273456131560}
+        m_TargetAssemblyTypeName: MinigameInput, Assembly-CSharp
+        m_MethodName: Submit
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 92268e9f-0ecb-4987-9397-2e15ea13380a
     m_ActionName: 'Minigame/Submit[/Keyboard/enter]'
   - m_PersistentCalls:
@@ -303,19 +352,67 @@ MonoBehaviour:
     m_ActionId: 420e3bad-495b-40d8-aad0-991bcda01486
     m_ActionName: 'Minigame/MouseDetect[/Mouse/position]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3187841273456131560}
+        m_TargetAssemblyTypeName: MinigameInput, Assembly-CSharp
+        m_MethodName: MoveLeft
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: fbf938f6-fdf5-404f-9bd8-877f1d2691b0
     m_ActionName: 'Minigame/MoveL[/Keyboard/a]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3187841273456131560}
+        m_TargetAssemblyTypeName: MinigameInput, Assembly-CSharp
+        m_MethodName: MoveUp
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 4562ad15-95f0-4e73-94b7-010ab69ea90a
     m_ActionName: 'Minigame/MoveU[/Keyboard/w]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3187841273456131560}
+        m_TargetAssemblyTypeName: MinigameInput, Assembly-CSharp
+        m_MethodName: MoveRight
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 784c9ccc-55b9-4d40-8c33-9ac5e739addf
     m_ActionName: 'Minigame/MoveR[/Keyboard/d]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3187841273456131560}
+        m_TargetAssemblyTypeName: MinigameInput, Assembly-CSharp
+        m_MethodName: MoveDown
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 68268849-86c8-40f2-9743-3724736036f7
     m_ActionName: 'Minigame/MoveD[/Keyboard/s]'
   m_NeverAutoSwitchControlSchemes: 0

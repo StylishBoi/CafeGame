@@ -17,8 +17,6 @@ public class MinigameInput : MonoBehaviour
     private Vector2 mousePosition;
     
     private float horizontalInput;
-    private float lastInputTime;
-    private const float inputCooldown = 0.2f;
 
     private void Awake()
     {
@@ -28,41 +26,13 @@ public class MinigameInput : MonoBehaviour
         }
         Instance = this;
     }
-    
-    private bool CanAcceptInput()
-    {
-        if (Time.time - lastInputTime < inputCooldown)
-            return false;
-
-        lastInputTime = Time.time;
-        return true;
-    }
 
     private void HandleButton(InputAction.CallbackContext context, ref bool flag)
     {
-        if (context.performed && CanAcceptInput())
+        if (context.started)
             flag = true;
-        else if (context.canceled)
-            flag = false;
     }
     
-    public void HeldMoveLeft(InputAction.CallbackContext context)
-    {
-        if (context.started)
-            moveLHeld = true;
-
-        if (context.canceled)
-            moveLHeld = false;
-    }
-
-    public void HeldMoveRight(InputAction.CallbackContext context)
-    {
-        if (context.started)
-            moveRHeld = true;
-
-        if (context.canceled)
-            moveRHeld = false;
-    }
     
     public void Interact(InputAction.CallbackContext context)
         => HandleButton(context, ref interactPressed);

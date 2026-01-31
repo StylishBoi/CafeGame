@@ -29,7 +29,6 @@ public class Dishwasher : MonoBehaviour
             {
                 MinigameManager.Instance.MiniGameEnd();
                 MaintenanceManager.dishwasherState = MaintenanceManager.WashingMachineState.HasCleaning;
-                MaintenanceManager.RemoveMaintenanceEvent();
                 minigameHeader.SetActive(false);
             }
         }

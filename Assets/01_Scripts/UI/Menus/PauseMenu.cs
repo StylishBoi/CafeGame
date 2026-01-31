@@ -1,16 +1,19 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
+using UnityEngine.Serialization;
 
 public class PauseMenu : MonoBehaviour
 {
     public static PauseMenu Instance { get; private set; }
     
     [SerializeField] private Canvas pauseMenu;
-    
-    //private UIFadeEffects _uiFadeEffects;
     [SerializeField] private Image fullScreenFade;
+    
+    [Header("Buttons")]
+    [SerializeField] private GameObject pauseButton;
+    [SerializeField] private GameObject optionsButton;
 
     public void Awake()
     {
@@ -36,6 +39,7 @@ public class PauseMenu : MonoBehaviour
     public void UnpauseGame()
     {
         pauseMenu.enabled = false;
+        EventSystem.current.SetSelectedGameObject(pauseButton);
         GameManager.Instance.UnPause();
     }
 
