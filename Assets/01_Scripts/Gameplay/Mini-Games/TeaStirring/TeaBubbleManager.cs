@@ -52,6 +52,7 @@ public class TeaBubbleManager : MonoBehaviour
         {
             MinigameManager.Instance.MiniGameEnd();
             InventoryManager.Instance.AddItem(goodMinigameItem);
+            AudioManager.Instance.PlaySfx(AudioManager.Instance.itemReceiveSFX);
             minigameHeader.SetActive(false);
         }
     }

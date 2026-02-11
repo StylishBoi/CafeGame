@@ -231,11 +231,13 @@ public class NPCAI : MonoBehaviour
                     switch (localItem.quality)
                     {
                         case Item.ItemQuality.Bad:
-                            _uIManager.Success();
+                            _uIManager.Mediocre();
+                            AudioManager.Instance.PlaySfx(AudioManager.Instance.midServeSFX);
                             ScoreSystem.IncreaseScore(localItem.score);
                             break;
                         case Item.ItemQuality.Good:
-                            _uIManager.Mediocre();
+                            _uIManager.Success();
+                            AudioManager.Instance.PlaySfx(AudioManager.Instance.goodServeSFX);
                             ScoreSystem.IncreaseScore(localItem.score);
                             break;
                         default:
@@ -250,6 +252,7 @@ public class NPCAI : MonoBehaviour
                 else
                 {
                     _uIManager.Failure();
+                    AudioManager.Instance.PlaySfx(AudioManager.Instance.badServeSFX);
                     StreakManager.NegativeStreakIncrease();
                     servedBad = true;
                 }

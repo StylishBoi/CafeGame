@@ -25,6 +25,7 @@ public class PredayMenu : MonoBehaviour
     {
         GameManager.Instance.StartGame();
         ScoreSystem.StartDay();
+        AudioManager.Instance.ChangeBGM(AudioManager.Instance.cafeMusic);
         SceneManager.LoadScene("CafePrototype");
     }
 

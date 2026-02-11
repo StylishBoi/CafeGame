@@ -18,6 +18,7 @@ public class TeaBubble : MonoBehaviour
         if (_bubbleActive==true)
         {
             Deactivate();
+            AudioManager.Instance.PlaySfx(AudioManager.Instance.teaBubbleSFX);
             _teaBubbleManager.MoveToNextBubble();
         }
     }

@@ -16,6 +16,11 @@ public class MainMenu : MonoBehaviour
         {
             loadButton.interactable = false;
         }
+
+        if (AudioManager.Instance.musicSource.clip == null)
+        {
+            AudioManager.Instance.PlayBGM(AudioManager.Instance.mainmenuMusic);
+        }
     }
     public void StartGame()
     {

@@ -111,6 +111,7 @@ public class CafeUIManager : MonoBehaviour
     {
         GameManager.Instance.EndFullDay();
         endResultScreen.SetActive(false);
+        AudioManager.Instance.ChangeBGM(AudioManager.Instance.mainmenuMusic);
         yield return StartCoroutine(_uiFadeEffects.DoFadeOut(fullScreenFade, Color.black));
         fullScreenFade.gameObject.SetActive(true);
         GameManager.Instance.SendToMenu();
@@ -131,6 +132,7 @@ public class CafeUIManager : MonoBehaviour
         GameManager.Instance.EndCafeDay();
         //StartCoroutine(_uiFadeEffects.DoFadeOut(endHourScreen, Color.black));
         StartCoroutine(_uiFadeEffects.ImageFlashEvent(resultFlash, eventFlashColor));
+        AudioManager.Instance.PlaySfx(AudioManager.Instance.dayEndSFX);
     }
 
 

@@ -103,6 +103,7 @@ public class MilkshakeMinigame : MonoBehaviour
         if (_currentPress == arrowOrderInts[_currentPosition])
         {
             listOfArrowButtons[_currentPosition].GoodClicked();
+            AudioManager.Instance.PlaySfx(AudioManager.Instance.milkshakeSuccessSFX);
             _currentPosition++;
                 
             if (_repeat)
@@ -119,6 +120,7 @@ public class MilkshakeMinigame : MonoBehaviour
         else
         {
             listOfArrowButtons[_currentPosition].BadClicked();
+            AudioManager.Instance.PlaySfx(AudioManager.Instance.milkshakeFailSFX);
             InventoryManager.Instance.AddItem(badMinigameItem);
             StartCoroutine(MinigameLeave());
         }
@@ -152,6 +154,7 @@ public class MilkshakeMinigame : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
         
+        AudioManager.Instance.PlaySfx(AudioManager.Instance.itemReceiveSFX);
         MinigameManager.Instance.MiniGameEnd();
         minigameHeader.SetActive(false);
     }

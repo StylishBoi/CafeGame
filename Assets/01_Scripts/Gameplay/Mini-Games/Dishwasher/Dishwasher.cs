@@ -24,6 +24,7 @@ public class Dishwasher : MonoBehaviour
         if (collision.CompareTag("Plate"))
         {
             _platesInMachine++;
+            AudioManager.Instance.PlaySfx(AudioManager.Instance.plateSFX);
             
             if (_platesInMachine >= 3)
             {

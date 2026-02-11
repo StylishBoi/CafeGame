@@ -15,7 +15,7 @@ public class GoodStreakEffect : MonoBehaviour
     }
     void FixedUpdate()
     {
-        if (StreakManager.Streak>=2 && !_isActive)
+        if (StreakManager.Streak>=3 && !_isActive)
         {
             _isActive = true;
             _effectManager.PositiveEffectInc(icon);

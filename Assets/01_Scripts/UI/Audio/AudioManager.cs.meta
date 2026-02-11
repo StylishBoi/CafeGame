@@ -1,0 +1,26 @@
+fileFormatVersion: 2
+guid: 6f0b9e9a790f51445b48069946056e97
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - musicSource: {instanceID: 0}
+  - sfxSource: {instanceID: 0}
+  - mainmenuMusic: {fileID: 8300000, guid: b3e28569d10cbb74bb4a12ef2e1fb9ec, type: 3}
+  - cafeMusic: {fileID: 8300000, guid: caf206cbc34cd4d4e953ca0446444257, type: 3}
+  - predayMusic: {instanceID: 0}
+  - goodServeSFX: {instanceID: 0}
+  - midServeSFX: {instanceID: 0}
+  - badServeSFX: {instanceID: 0}
+  - clientLeaveSFX: {instanceID: 0}
+  - itemReceiveSFX: {instanceID: 0}
+  - dayEndSFX: {instanceID: 0}
+  - savedGameSFX: {instanceID: 0}
+  - buttonSelectSFX: {instanceID: 0}
+  - buttonPressSFX: {instanceID: 0}
+  - buttonErrorSFX: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

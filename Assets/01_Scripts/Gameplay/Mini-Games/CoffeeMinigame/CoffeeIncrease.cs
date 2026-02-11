@@ -22,6 +22,11 @@ public class CoffeeIncrease : MonoBehaviour
         _pipeScale=transform.localScale;
     }
 
+    void OnEnable()
+    {
+        AudioManager.Instance.PlaySfx(AudioManager.Instance.coffeePourSFX);
+    }
+
     void OnDisable()
     {
         Reset();
@@ -41,12 +46,16 @@ public class CoffeeIncrease : MonoBehaviour
             
             if (_success)
             {
+                AudioManager.Instance.StopSfx();
                 InventoryManager.Instance.AddItem(goodMinigameItem);
+                AudioManager.Instance.PlaySfx(AudioManager.Instance.itemReceiveSFX);
                 MinigameManager.Instance.MiniGameEnd();
             }
             else
             {
+                AudioManager.Instance.StopSfx();
                 InventoryManager.Instance.AddItem(badMinigameItem);
+                AudioManager.Instance.PlaySfx(AudioManager.Instance.itemReceiveSFX);
                 MinigameManager.Instance.MiniGameEnd();
             }
             minigameHeader.SetActive(false);
@@ -60,8 +69,10 @@ public class CoffeeIncrease : MonoBehaviour
         if (collision.CompareTag("EndZone"))
         {
             Debug.Log("Not a success");
+            AudioManager.Instance.StopSfx();
             _pipeStopped = true;
             InventoryManager.Instance.AddItem(badMinigameItem);
+            AudioManager.Instance.PlaySfx(AudioManager.Instance.itemReceiveSFX);
             MinigameManager.Instance.MiniGameEnd();
             minigameHeader.SetActive(false);
         }
@@ -76,6 +87,7 @@ public class CoffeeIncrease : MonoBehaviour
     private void Reset()
     {
         _pipeStopped = false;
+        _success = false;
         transform.localScale = _pipeScale;
         transform.position = _pipePosition;
     }

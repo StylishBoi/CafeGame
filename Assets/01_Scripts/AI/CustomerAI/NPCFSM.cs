@@ -99,6 +99,7 @@ public class NPCFSM : MonoBehaviour
                 _npcAI.NPCLeave();
                 NPCVisual.color = Color.red;
                 StreakManager.NegativeStreakIncrease();
+                AudioManager.Instance.PlaySfx(AudioManager.Instance.clientLeaveSFX);
                 _npcAI.LeaveUnhappyFactor = 1f;
                 break;
             case FSM_State.Exiting:

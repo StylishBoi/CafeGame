@@ -33,6 +33,7 @@ public class Trashcan : MonoBehaviour
                 if (receivedItem != null && FillageRate != 3)
                 {
                     Debug.Log("Used item : " +receivedItem);
+                    AudioManager.Instance.PlaySfx(AudioManager.Instance.filledTrashcanSFX);
                     FillageRate++;
                 }
                 else if (FillageRate == 3)

@@ -38,11 +38,13 @@ public class FloorMop : MonoBehaviour
     {
         if (MinigameInput.Instance.GetMoveLPressed() && _repeat)
         {
+            AudioManager.Instance.PlaySfx(AudioManager.Instance.sweepSFX);
             transform.localPosition += new Vector3(-80f, 0f, 0f)*Time.deltaTime;
             SweepEvent();
         }
         else if (MinigameInput.Instance.GetMoveRPressed() && !_repeat)
         {
+            AudioManager.Instance.PlaySfx(AudioManager.Instance.sweepSFX);
             transform.localPosition += new Vector3(80f, 0f, 0f)*Time.deltaTime;
             SweepEvent();
         }

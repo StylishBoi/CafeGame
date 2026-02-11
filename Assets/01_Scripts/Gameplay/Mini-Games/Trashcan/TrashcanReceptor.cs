@@ -24,6 +24,7 @@ public class TrashcanReceptor : MonoBehaviour
         {
             Debug.Log("Trash bag entered");
             TrashcanMinigame.TrashCount++;
+            AudioManager.Instance.PlaySfx(AudioManager.Instance.trashcanSFX);
             Destroy(collision.gameObject);
         }
         if (collision.CompareTag("CollisionBorder"))

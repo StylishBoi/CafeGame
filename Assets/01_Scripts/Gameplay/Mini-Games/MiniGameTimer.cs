@@ -37,6 +37,7 @@ public class MiniGameTimer : MonoBehaviour
             timeLeft = 0;
             countdownText.text = timeLeft.ToString("0");
             InventoryManager.Instance.AddItem(badMinigameItem);
+            AudioManager.Instance.PlaySfx(AudioManager.Instance.itemReceiveSFX);
             MinigameManager.Instance.MiniGameEnd();
             minigameHeader.SetActive(false);
         }
