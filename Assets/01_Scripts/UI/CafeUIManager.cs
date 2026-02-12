@@ -124,6 +124,7 @@ public class CafeUIManager : MonoBehaviour
     {
         HideUI();
         endResultScreen.gameObject.SetActive(true);
+        AudioManager.Instance.PlaySfx(AudioManager.Instance.scoreScreenSFX);
         HideInventory();
     }
 

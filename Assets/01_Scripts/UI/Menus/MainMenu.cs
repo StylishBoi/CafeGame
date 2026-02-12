@@ -30,8 +30,8 @@ public class MainMenu : MonoBehaviour
     {
         if(SaveSystem.HasData())
         {
-            SceneManager.LoadScene("PredayScene");
             ScoreSystem.LoadData();
+            SceneManager.LoadScene("PredayScene");
         }
     }
     

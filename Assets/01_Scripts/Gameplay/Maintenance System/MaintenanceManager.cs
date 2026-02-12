@@ -30,6 +30,7 @@ public class MaintenanceManager : MonoBehaviour
         if (ScoreSystem.CustomersServed % 3 == 0 && ScoreSystem.CustomersServed !=0 && dishwasherState == WashingMachineState.Empty)
         {
             dishwasherState = WashingMachineState.NeedsCleaning;
+            AudioManager.Instance.PlaySfx(AudioManager.Instance.dishwasherSFX);
         }
 
         if (dishwasherState == WashingMachineState.HasCleaning && ScoreSystem.CustomersServed % 3 == 1)

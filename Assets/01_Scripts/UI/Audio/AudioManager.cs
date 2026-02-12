@@ -27,6 +27,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] public AudioClip dishwasherSFX;
     [SerializeField] public AudioClip filledTrashcanSFX;
     [SerializeField] public AudioClip scoreScreenSFX;
+    [SerializeField] public AudioClip clientArrivalSFX;
     [Header("Minigame Sounds")]
     [SerializeField] public AudioClip milkshakeSuccessSFX;
     [SerializeField] public AudioClip milkshakeFailSFX;

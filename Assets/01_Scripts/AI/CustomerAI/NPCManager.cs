@@ -57,6 +57,7 @@ public class NPCManager : MonoBehaviour
                 if (_customerTimer >= _costumerCoolDown)
                 {
                     AddCustomer();
+                    AudioManager.Instance.PlaySfx(AudioManager.Instance.clientArrivalSFX);
                     _customerTimer = 0;
                     _costumerCoolDown = Random.Range(minRushHourCoolDown, maxRushHourCoolDown);
                 }

@@ -374,8 +374,10 @@ MonoBehaviour:
   buttonSelectSFX: {fileID: 8300000, guid: bccc73d2a60ccdd4b8fa5c1d888e15a3, type: 3}
   buttonPressSFX: {fileID: 8300000, guid: b890ac6781f9c184d91900602e972f32, type: 3}
   buttonErrorSFX: {fileID: 8300000, guid: 98d021fd180391148800f511f6d6a156, type: 3}
-  dishwasherSFX: {fileID: 0}
+  dishwasherSFX: {fileID: 8300000, guid: 56e2d84891b170045a1659e88f837947, type: 3}
   filledTrashcanSFX: {fileID: 8300000, guid: e8aea86ed4decd845951afa69446706a, type: 3}
+  scoreScreenSFX: {fileID: 8300000, guid: 24fd5131ca492364bbb92ce00dcd16ed, type: 3}
+  clientArrivalSFX: {fileID: 8300000, guid: b95f44bcb862b5f4097867b510116f25, type: 3}
   milkshakeSuccessSFX: {fileID: 8300000, guid: 978c8095918d76940b53e63050b1ebe7, type: 3}
   milkshakeFailSFX: {fileID: 8300000, guid: 7951d05b347d561418377970c60637f8, type: 3}
   sweepSFX: {fileID: 8300000, guid: 6be278aba31f86441b9d2c386f4e8558, type: 3}
@@ -2434,13 +2436,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 84838056}
-        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
-        m_MethodName: PlaySfx
-        m_Mode: 2
+      - m_Target: {fileID: 2098214711}
+        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+        m_MethodName: LoadGame
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: 90bde27d6387a8742bf3a152ef7b0fc0, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
