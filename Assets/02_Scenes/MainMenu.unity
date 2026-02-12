@@ -378,6 +378,8 @@ MonoBehaviour:
   filledTrashcanSFX: {fileID: 8300000, guid: e8aea86ed4decd845951afa69446706a, type: 3}
   scoreScreenSFX: {fileID: 8300000, guid: 24fd5131ca492364bbb92ce00dcd16ed, type: 3}
   clientArrivalSFX: {fileID: 8300000, guid: b95f44bcb862b5f4097867b510116f25, type: 3}
+  positiveStatusSFX: {fileID: 8300000, guid: 296145394b4cd45469ac6f5afb28dae1, type: 3}
+  negativeStatusSFX: {fileID: 8300000, guid: 8c19d3bd1a207f446adc5ebd1a124793, type: 3}
   milkshakeSuccessSFX: {fileID: 8300000, guid: 978c8095918d76940b53e63050b1ebe7, type: 3}
   milkshakeFailSFX: {fileID: 8300000, guid: 7951d05b347d561418377970c60637f8, type: 3}
   sweepSFX: {fileID: 8300000, guid: 6be278aba31f86441b9d2c386f4e8558, type: 3}

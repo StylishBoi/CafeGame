@@ -57,7 +57,6 @@ public class NPCManager : MonoBehaviour
                 if (_customerTimer >= _costumerCoolDown)
                 {
                     AddCustomer();
-                    AudioManager.Instance.PlaySfx(AudioManager.Instance.clientArrivalSFX);
                     _customerTimer = 0;
                     _costumerCoolDown = Random.Range(minRushHourCoolDown, maxRushHourCoolDown);
                 }
@@ -110,6 +109,7 @@ public class NPCManager : MonoBehaviour
             if (_seats[i].transform.childCount == 0)
             {
                 Instantiate(npcPrefab, spawnPosition.transform.position, Quaternion.identity, _seats[i].transform);
+                AudioManager.Instance.PlaySfx(AudioManager.Instance.clientArrivalSFX);
                 break;
             }
         }

@@ -43,13 +43,15 @@ public class EffectManager : MonoBehaviour
     private void StatusCheck()
     {
         //Status effects
-        if (_negativeCount > _positiveCount)
+        if (_negativeCount > _positiveCount && !NegativeEffect)
         {
             NegativeEffect = true;
+            AudioManager.Instance.PlaySfx(AudioManager.Instance.negativeStatusSFX);
         }
-        else if (_positiveCount > _negativeCount)
+        else if (_positiveCount > _negativeCount && !PositiveEffect)
         {
-            PositiveEffect = true;
+            PositiveEffect = true;;
+            AudioManager.Instance.PlaySfx(AudioManager.Instance.positiveStatusSFX);
         }
         else
         {

@@ -42,6 +42,7 @@ public class DishwasherDetector : MonoBehaviour
         else
         {
             warningCue.SetActive(false);
+            visualCue.SetActive(false);
         }
     }
 
