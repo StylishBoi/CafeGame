@@ -45,4 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   icon: {fileID: 6697327146417711073, guid: 8835c8246363a374d9db46a29c279c13, type: 3}
-  maxTillDirty: 5
+  maxTillDirty: 15

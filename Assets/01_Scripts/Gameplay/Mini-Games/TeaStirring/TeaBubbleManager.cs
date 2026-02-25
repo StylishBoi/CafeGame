@@ -11,11 +11,16 @@ public class TeaBubbleManager : MonoBehaviour
     [Header("Minigame")]
     [SerializeField] GameObject minigameHeader;
     
+    [Header("Animation")]
+    [SerializeField] private SpriteRenderer liquidTea;
+    [SerializeField] private Color startColor;
+    [SerializeField] private Color endColor;
+    
     private List<TeaBubble> _listofbubbles = new List<TeaBubble>();
     private int _totalBubbles;
     private int _currentBubble;
 
-    private readonly int _totalRotations=10;
+    private int _totalRotations=10;
     private int _currentRotation;
     
     void Start()
@@ -30,10 +35,13 @@ public class TeaBubbleManager : MonoBehaviour
     private void OnDisable()
     {
         _currentRotation = 0;
+        liquidTea.color=startColor;
     }
 
     public void MoveToNextBubble()
     {
+        LiquidAnimation();
+        
         //Goes through the list after a bubble has been popped
         if (_currentBubble < _totalBubbles - 1)
         {
@@ -55,5 +63,12 @@ public class TeaBubbleManager : MonoBehaviour
             AudioManager.Instance.PlaySfx(AudioManager.Instance.itemReceiveSFX);
             minigameHeader.SetActive(false);
         }
+    }
+
+    private void LiquidAnimation()
+    {
+        Debug.Log(liquidTea.color);
+        liquidTea.color=Color.Lerp(startColor, endColor, (float)_currentRotation/_totalRotations);
+        Debug.Log(liquidTea.color);
     }
 }

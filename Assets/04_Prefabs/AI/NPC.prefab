@@ -184,9 +184,8 @@ MonoBehaviour:
   timerSprite: {fileID: 9034323299887310883}
   targetPosition: {x: 0, y: 0}
   arrivalFactor: 0
-  movementSpeed: 3
   waitFactor: 0
-  timeToWait: 15
+  timeToWait: 45
   eatFactor: 0
   timeToEat: 10
   leaveHappyFactor: 0
