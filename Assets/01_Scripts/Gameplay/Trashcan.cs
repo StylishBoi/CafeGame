@@ -38,8 +38,8 @@ public class Trashcan : MonoBehaviour
                 }
                 else if (FillageRate == 3)
                 {
-                    //SceneManager.LoadScene("Trashcan", LoadSceneMode.Additive);
                     minigamePrefab.SetActive(true);
+                    MinigameManager.Instance.EnterMinigame();
                     FillageRate = 0;
                 }
                 else

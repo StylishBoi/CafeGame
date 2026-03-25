@@ -15,6 +15,8 @@ public class TrashcanReceptor : MonoBehaviour
     {
         int horizontal = MinigameInput.Instance.GetHorizontalHeld();
 
+        Debug.Log(horizontal);
+        
         _rb2d.linearVelocity = new Vector2(horizontal * moveSpeed, _rb2d.linearVelocity.y);
     }
 

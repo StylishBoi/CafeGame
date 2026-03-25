@@ -103,6 +103,7 @@ public class CoffeeIncrease : MonoBehaviour
     {
         _pipeStopped = false;
         _success = false;
+        
         liquidAsset.transform.position = _originalLiquidPosition;
         liquidAsset.transform.localScale = _originalLiquidScalePosition;
         topLiquidAsset.transform.position = _originalTopPosition;

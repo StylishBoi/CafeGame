@@ -33,6 +33,11 @@ public class MinigameInput : MonoBehaviour
             flag = true;
     }
     
+    private void HandleButton(InputAction.CallbackContext context, ref bool pressed, ref bool held)
+    {
+        if (context.started) { pressed = true; held = true; }
+        if (context.canceled) held = false;
+    }
     
     public void Interact(InputAction.CallbackContext context)
         => HandleButton(context, ref interactPressed);
@@ -41,10 +46,10 @@ public class MinigameInput : MonoBehaviour
         => HandleButton(context, ref submitPressed);
 
     public void MoveLeft(InputAction.CallbackContext context)
-        => HandleButton(context, ref moveLPressed);
+        => HandleButton(context, ref moveLPressed, ref moveLHeld);
 
     public void MoveRight(InputAction.CallbackContext context)
-        => HandleButton(context, ref moveRPressed);
+        => HandleButton(context, ref moveRPressed, ref moveRHeld);
 
     public void MoveUp(InputAction.CallbackContext context)
         => HandleButton(context, ref moveUPressed);

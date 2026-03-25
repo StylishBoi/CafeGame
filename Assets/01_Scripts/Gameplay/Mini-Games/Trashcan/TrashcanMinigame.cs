@@ -59,6 +59,7 @@ public class TrashcanMinigame : MonoBehaviour
         
         //MinigameManager.Instance.MiniGameEnd();
         minigameHeader.SetActive(false);
+        MinigameManager.Instance.MiniGameEnd();
     }
 
     void Reset()
