@@ -9,6 +9,8 @@ public class CoffeeIncrease : MonoBehaviour
     
     [Header("Minigame")]
     [SerializeField] private GameObject minigameHeader;
+    [SerializeField] private GameObject triggerZone;
+    [SerializeField] private Transform[] triggerZones;
     
     private bool _pipeStopped;
     private bool _success;
@@ -25,6 +27,9 @@ public class CoffeeIncrease : MonoBehaviour
     void OnEnable()
     {
         AudioManager.Instance.PlaySfx(AudioManager.Instance.coffeePourSFX);
+        
+        int rand = Random.Range(0, 3);
+        triggerZone.transform.position=triggerZones[rand].position;
     }
 
     void OnDisable()

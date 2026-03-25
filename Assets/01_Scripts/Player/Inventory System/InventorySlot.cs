@@ -13,11 +13,13 @@ public class InventorySlot : MonoBehaviour
    
    public void Select()
    {
+      gameObject.transform.localScale=new Vector3(1.2f, 1.2f, 1.2f);
       image.color = selectedColor;
    }
 
    public void Deselect()
    {
+      gameObject.transform.localScale=new Vector3(1f, 1f, 1f);
       image.color = notSelectedColor;
    }
 }
