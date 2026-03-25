@@ -5,36 +5,28 @@ public class TeaBubble : MonoBehaviour
 {
     private GameObject _bubbleTexture;
     private TeaBubbleManager _teaBubbleManager;
-    private bool _bubbleActive;
 
-    void Awake()
+    void Start()
     {
         _bubbleTexture = gameObject.transform.GetChild(0).gameObject;
         _teaBubbleManager = GetComponentInParent<TeaBubbleManager>();
-        Deactivate();
     }
+
+    void OnDisable()
+    {
+        Destroy(gameObject);
+    }
+
     void OnMouseOver()
     {
-        if (_bubbleActive==true)
-        {
-            Deactivate();
-            AudioManager.Instance.PlaySfx(AudioManager.Instance.teaBubbleSFX);
-            _teaBubbleManager.MoveToNextBubble();
-        }
+        Debug.Log("MouseOver");
+        AudioManager.Instance.PlaySfx(AudioManager.Instance.teaBubbleSFX);
+        _teaBubbleManager.MoveToNextBubble();
+        Deactivate();
     }
-    
+
     private void Deactivate()
     {
-        //Deactivate the target
-        _bubbleActive = false;
-        _bubbleTexture.SetActive(false);
-    }
-    
-    public void Activate()
-    {
-    
-        //Activate the target
-        _bubbleActive = true;
-        _bubbleTexture.SetActive(true);
+        Destroy(gameObject);
     }
 }

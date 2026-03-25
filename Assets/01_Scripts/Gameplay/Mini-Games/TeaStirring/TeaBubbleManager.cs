@@ -1,61 +1,46 @@
-using System;
+using System.Collections;
 using UnityEngine;
-using System.Collections.Generic;
-using UnityEngine.SceneManagement;
 
 public class TeaBubbleManager : MonoBehaviour
 {
-    [Header("Minigames Award")]
-    [SerializeField] Item goodMinigameItem;
-    
-    [Header("Minigame")]
-    [SerializeField] GameObject minigameHeader;
-    
-    [Header("Animation")]
-    [SerializeField] private SpriteRenderer liquidTea;
+    [Header("Minigames Award")] [SerializeField]
+    Item goodMinigameItem;
+
+    [Header("Minigame")] [SerializeField] GameObject minigameHeader;
+    [SerializeField] GameObject teaBubble;
+    [SerializeField] private Collider2D spawnableAreaCollider;
+
+    [Header("Animation")] [SerializeField] private SpriteRenderer liquidTea;
     [SerializeField] private Color startColor;
     [SerializeField] private Color endColor;
-    
-    private List<TeaBubble> _listofbubbles = new List<TeaBubble>();
-    private int _totalBubbles;
-    private int _currentBubble;
 
-    private int _totalRotations=10;
+    private int _totalRotations = 10;
     private int _currentRotation;
-    
-    void Start()
+
+    void OnEnable()
     {
-        _totalBubbles=gameObject.transform.childCount;
-        
-        TeaBubble[] targetsArray = GetComponentsInChildren<TeaBubble>();
-        _listofbubbles = new List<TeaBubble>(targetsArray);
         MoveToNextBubble();
     }
 
     private void OnDisable()
     {
         _currentRotation = 0;
-        liquidTea.color=startColor;
+        liquidTea.color = startColor;
     }
 
     public void MoveToNextBubble()
     {
         LiquidAnimation();
-        
-        //Goes through the list after a bubble has been popped
-        if (_currentBubble < _totalBubbles - 1)
-        {
-            _currentBubble++;
-        }
-        else
-        {
-            _currentBubble = 0;
-        }
-        _listofbubbles[_currentBubble].Activate();
-        
+
         //Count the numbers of bubble popped to see if the minigame is over or not
         _currentRotation++;
-        
+
+        Vector2 spawnPosition = GetRandomSpawnPosition(spawnableAreaCollider);
+        if (spawnPosition != Vector2.zero)
+        {
+            var newMaintenanceEvent = Instantiate(teaBubble, spawnPosition, Quaternion.identity, transform);
+        }
+
         if (_currentRotation >= _totalRotations)
         {
             MinigameManager.Instance.MiniGameEnd();
@@ -68,7 +53,58 @@ public class TeaBubbleManager : MonoBehaviour
     private void LiquidAnimation()
     {
         Debug.Log(liquidTea.color);
-        liquidTea.color=Color.Lerp(startColor, endColor, (float)_currentRotation/_totalRotations);
+        liquidTea.color = Color.Lerp(startColor, endColor, (float)_currentRotation / _totalRotations);
         Debug.Log(liquidTea.color);
+    }
+
+    private Vector2 GetRandomSpawnPosition(Collider2D spawnableAreaCollider)
+    {
+        var spawnPosition = Vector2.zero;
+        var isSpawnPosValid = false;
+
+        var attemptCount = 0;
+        const int maxAttempts = 200;
+
+        while (attemptCount < maxAttempts)
+        {
+            spawnPosition = GetRandomPointInCollider(spawnableAreaCollider);
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(spawnPosition, 0.5f);
+            
+            var isInvalidCollision = false;
+            foreach (Collider2D collider in colliders)
+            {
+                if (((1<<collider.gameObject.layer)) != 0)
+                {
+                    isInvalidCollision = true;
+                    break;
+                }
+            }
+            
+            if (!isInvalidCollision)
+            {
+                isSpawnPosValid = true;
+            }
+            attemptCount++;
+        }
+
+        // if (!isSpawnPosValid)
+        // {
+        //     Debug.LogWarning("No valid position left");
+        //     return Vector2.zero;
+        // }
+        return spawnPosition;
+    }
+
+    private Vector2 GetRandomPointInCollider(Collider2D collider, float offset = 1f)
+    {
+        var collBounds = collider.bounds;
+
+        var minBounds = new Vector2(collBounds.min.x + offset, collBounds.min.y + offset);
+        var maxBounds = new Vector2(collBounds.max.x - offset, collBounds.max.y - offset);
+
+        var randomX = Random.Range(minBounds.x, maxBounds.x);
+        var randomY = Random.Range(minBounds.y, maxBounds.y);
+
+        return new Vector2(randomX, randomY);
     }
 }

@@ -12,16 +12,24 @@ public class CoffeeIncrease : MonoBehaviour
     [SerializeField] private GameObject triggerZone;
     [SerializeField] private Transform[] triggerZones;
     
+    [Header("Gameobjects")]
+    [SerializeField] private GameObject liquidAsset;
+    [SerializeField] private GameObject topLiquidAsset;
+    
     private bool _pipeStopped;
     private bool _success;
     
-    private Vector3 _pipePosition;
-    private Vector3 _pipeScale;
+    private Vector3 _originalLiquidPosition;
+    private Vector3 _originalLiquidScalePosition;
+    
+    private Vector3 _originalTopPosition;
 
     void Start()
     {
-        _pipePosition=transform.position;
-        _pipeScale=transform.localScale;
+        _originalLiquidPosition=liquidAsset.transform.position;
+        _originalLiquidScalePosition=liquidAsset.transform.localScale;
+        
+        _originalTopPosition=topLiquidAsset.transform.position;
     }
 
     void OnEnable()
@@ -36,15 +44,17 @@ public class CoffeeIncrease : MonoBehaviour
     {
         Reset();
     }
+    
     void FixedUpdate()
     {
         if (_pipeStopped != true)
         {
-            this.transform.localScale += new Vector3(0f, 0.4f, 0f)*Time.deltaTime;
-            this.transform.localPosition += new Vector3(0f, 0.2f, 0f)*Time.deltaTime;
+            liquidAsset.transform.localScale += new Vector3(0f, 0.6f, 0f)*Time.deltaTime;
+            liquidAsset.transform.localPosition += new Vector3(0f, 0.2f, 0f)*Time.deltaTime;
+            topLiquidAsset.transform.localPosition += new Vector3(0f, 0.4f, 0f)*Time.deltaTime;
         }
         
-        if (MinigameInput.Instance.GetInteractPressed() && _pipeStopped == false)
+        if (MinigameInput.Instance.GetInteractPressed() && !_pipeStopped)
         {
             Debug.Log(MinigameInput.Instance.GetInteractPressed());
             _pipeStopped = true;
@@ -93,8 +103,9 @@ public class CoffeeIncrease : MonoBehaviour
     {
         _pipeStopped = false;
         _success = false;
-        transform.localScale = _pipeScale;
-        transform.position = _pipePosition;
+        liquidAsset.transform.position = _originalLiquidPosition;
+        liquidAsset.transform.localScale = _originalLiquidScalePosition;
+        topLiquidAsset.transform.position = _originalTopPosition;
     }
     
 }
