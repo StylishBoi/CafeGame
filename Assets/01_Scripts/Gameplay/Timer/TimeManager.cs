@@ -88,6 +88,14 @@ public class TimeManager : MonoBehaviour
         }
     }
 
+    public void ResetTime()
+    {
+        Hour = startDayHour.hour;
+        Minute = startDayHour.minute;
+
+        _timer = _minuteToRealTime;
+    }
+
     private bool CompareHours(InGameTime a, InGameTime b)
     {
         return (a.hour == b.hour && a.minute == b.minute);

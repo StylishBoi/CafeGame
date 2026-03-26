@@ -46,6 +46,7 @@ public class PredayMenu : MonoBehaviour
     public void MainMenu()
     {
         //StartCoroutine(MainMenuFade());
+        SaveSystem.UnLoadData();
         SceneManager.LoadScene("MainMenu");
     }
     

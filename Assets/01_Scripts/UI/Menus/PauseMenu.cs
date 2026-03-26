@@ -23,7 +23,22 @@ public class PauseMenu : MonoBehaviour
         else Instance = this;
         Debug.Log(Instance);
     }
-    
+
+    public void Update()
+    {
+        if (InputManager.Instance.GetPausePressed())
+        {
+            if (GameManager.Instance.State == GameState.BasicPlay ||
+                GameManager.Instance.State == GameState.CafePlay)
+            {
+                PauseGame();
+            }
+            else if (GameManager.Instance.State == GameState.Paused)
+            {
+                UnpauseGame();
+            }
+        }
+    }
     public void SwitchCanvas(Canvas canvas)
     {
         pauseMenu.enabled = !pauseMenu.enabled;
@@ -47,7 +62,9 @@ public class PauseMenu : MonoBehaviour
     {
         pauseMenu.enabled = false;
         //StartCoroutine(MainMenuFade());
+        GameManager.Instance.SendToMenu();
         SceneManager.LoadScene("MainMenu");
+        Time.timeScale = 1;
     }
 
     // private IEnumerator MainMenuFade()

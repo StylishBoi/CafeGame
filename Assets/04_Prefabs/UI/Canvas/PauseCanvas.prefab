@@ -103,6 +103,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 10
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -507,6 +508,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 10
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -851,6 +853,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 10
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -1142,6 +1145,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 8066650812865645609}
   fullScreenFade: {fileID: 5500201011142475539}
+  pauseButton: {fileID: 6204593080201961319}
+  optionsButton: {fileID: 4143472703096418101}
 --- !u!1 &8751647294683994099
 GameObject:
   m_ObjectHideFlags: 0
@@ -1245,6 +1250,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 10
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0

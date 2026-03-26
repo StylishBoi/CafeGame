@@ -47,4 +47,9 @@ public static class SaveSystem
         string path = Application.persistentDataPath + "/SaveData.dat";
         File.Delete(path);
     }
+
+    public static void UnLoadData()
+    {
+        ScoreSystem.UnloadData();
+    }
 }

@@ -67,5 +67,17 @@ public static class ScoreSystem
         SavedStats savedStats = SaveSystem.LoadStats();
         TotalMoneyScore = savedStats.totalMoneyScore;
         DayCount = savedStats.dayCount;
+        AllMoneyEver = savedStats.allMoneyEver;
+        AllCustomersEver = savedStats.allCustomersEver;
+        HighestStreakEver = savedStats.highestStreakEver;
+    }
+
+    public static void UnloadData()
+    {
+        TotalMoneyScore = 0;
+        DayCount = 1;
+        AllMoneyEver = 0;
+        AllCustomersEver = 0;
+        HighestStreakEver = 0;
     }
 }

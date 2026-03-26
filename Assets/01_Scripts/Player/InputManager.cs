@@ -14,6 +14,7 @@ public class InputManager : MonoBehaviour
     //Buttons pressed
     private bool _interactPressed;
     private bool _submitPressed;
+    private bool _pausePressed;
 
     public static InputManager Instance;
 
@@ -38,7 +39,10 @@ public class InputManager : MonoBehaviour
 
     private void Update()
     {
-        Movement = _moveAction.ReadValue<Vector2>();
+        if(GameManager.Instance.State!=GameState.Paused)
+        {
+            Movement = _moveAction.ReadValue<Vector2>();
+        }
     }
 
     public void InteractButtonPressed(InputAction.CallbackContext context)
@@ -67,18 +71,14 @@ public class InputManager : MonoBehaviour
 
     public void PausePressed(InputAction.CallbackContext context)
     {
-        if (context.started && (GameManager.Instance.State == GameState.BasicPlay ||
-            GameManager.Instance.State == GameState.CafePlay))
+        Debug.Log("Pause was pressed");
+        if (context.started)
         {
-            PauseMenu.Instance.PauseGame();
+            _pausePressed = true;
         }
-    }
-
-    public void UnpausePressed(InputAction.CallbackContext context)
-    {
-        if (context.started && GameManager.Instance.State == GameState.Paused)
+        else if (context.canceled)
         {
-            PauseMenu.Instance.UnpauseGame();
+            _pausePressed = false;
         }
     }
 
@@ -86,6 +86,14 @@ public class InputManager : MonoBehaviour
     {
         bool result = _interactPressed;
         _interactPressed = false;
+        return result;
+    }
+    
+    
+    public bool GetPausePressed()
+    {
+        bool result = _pausePressed;
+        _pausePressed = false;
         return result;
     }
 
