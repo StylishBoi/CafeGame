@@ -14,7 +14,7 @@ public class PauseMenu : MonoBehaviour
     [Header("Buttons")]
     [SerializeField] private GameObject pauseButton;
     [SerializeField] private GameObject optionsButton;
-
+    
     public void Awake()
     {
         //_uiFadeEffects = FindFirstObjectByType<UIFadeEffects>();

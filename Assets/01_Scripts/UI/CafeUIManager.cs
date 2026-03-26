@@ -116,7 +116,7 @@ public class CafeUIManager : MonoBehaviour
         fullScreenFade.gameObject.SetActive(true);
         GameManager.Instance.SendToMenu();
         ScoreSystem.EndDay();
-        SceneManager.LoadScene("PredayScene");
+        SceneManager.LoadScene("MainMenu");
     }
     
     

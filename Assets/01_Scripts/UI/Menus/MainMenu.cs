@@ -7,6 +7,8 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private Image transitionImage;
     [SerializeField] private Button loadButton;
     private Color _currentColor;
+    
+    [SerializeField] private GameObject preDayMenu;
 
     void Start()
     {
@@ -24,14 +26,18 @@ public class MainMenu : MonoBehaviour
     }
     public void StartGame()
     {
-        SceneManager.LoadScene("PredayScene");
+        preDayMenu.SetActive(true);
+        gameObject.SetActive(false);
+        //SceneManager.LoadScene("PredayScene");
     }
     public void LoadGame()
     {
         if(SaveSystem.HasData())
         {
             ScoreSystem.LoadData();
-            SceneManager.LoadScene("PredayScene");
+            preDayMenu.SetActive(true);
+            gameObject.SetActive(false);
+            //SceneManager.LoadScene("PredayScene");
         }
     }
     

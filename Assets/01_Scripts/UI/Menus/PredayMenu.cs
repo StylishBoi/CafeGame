@@ -13,6 +13,8 @@ public class PredayMenu : MonoBehaviour
     [SerializeField] private GameObject savePanel;
     [SerializeField] private TextMeshProUGUI bankText;
 
+    [SerializeField] private GameObject mainMenu;
+
     void OnEnable()
     {
         dayText.text = "Day " + ScoreSystem.DayCount;
@@ -47,7 +49,8 @@ public class PredayMenu : MonoBehaviour
     {
         //StartCoroutine(MainMenuFade());
         SaveSystem.UnLoadData();
-        SceneManager.LoadScene("MainMenu");
+        mainMenu.SetActive(true);
+        gameObject.SetActive(false);
     }
     
     private IEnumerator PauseEffect()
